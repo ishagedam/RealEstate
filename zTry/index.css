@@ -1,0 +1,208 @@
+/* Base Styling & Typography */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* IMPORTANT: Class to prevent body scrolling when modal is open */
+body.modal-open {
+    overflow: hidden; 
+}
+
+/* Main Content Wrapper (Used to hold buttons and sections) */
+#main-content-wrapper {
+    padding: 20px;
+    max-width: 1200px; /* Constrain main content width */
+    margin: 0 auto;
+}
+
+/* Tab Buttons Styling */
+.btnContainer { 
+    text-align: center; 
+    margin-bottom: 40px; 
+}
+.btn1, .btn2 {
+    padding: 10px 30px; margin: 0 10px; border: 2px solid #5a5a5a; 
+    background-color: transparent; color: #5a5a5a; font-size: 1em; 
+    font-weight: bold; cursor: pointer; border-radius: 4px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+.btn1.active-tab, .btn2.active-tab {
+    background-color: #333; color: white; border-color: #333;
+}
+
+/* *** COMMON STYLING FOR BOTH SEPARATE SECTIONS (.sfDelivered1 and .sfDelivered2) *** */
+.sfDelivered1, .sfDelivered2 {
+    /* REMOVED MAX-WIDTH/MARGIN here as it's on #main-content-wrapper */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px; 
+    
+    /* Content visibility managed by JS (opacity for fade effect) */
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.sfDelivered1.active-content, .sfDelivered2.active-content {
+    display: block;
+    opacity: 1;
+}
+
+/* Other general text styling */
+.headPara { text-align: center; margin-bottom: 20px; }
+.devInfo { font-size: 2.5em; font-weight: 700; color: #333; margin-bottom: 5px; }
+.para1 { font-size: 1.1em; color: #666; margin-top: 0; }
+
+/* Project Card Layout (Grid Base) */
+.OgContainer {
+    display: grid; gap: 20px; padding: 20px 0; align-items: stretch; 
+}
+
+/* Desktop Layout - Define the column count for each specific container */
+/* Ongoing: 3 cards -> 3 columns */
+.ongoing-grid {
+    grid-template-columns: repeat(3, 1fr); 
+}
+/* Completed: 4 cards -> 4 columns */
+.completed-grid {
+    grid-template-columns: repeat(4, 1fr); 
+}
+
+/* *** CARD HEIGHT & BASE STYLING (Adjusted to accommodate your new card content) *** */
+.project-card {
+    background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
+    border-radius: 10px; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s; display: flex; flex-direction: column;
+    justify-content: space-between; 
+    /* Increased base height to fit new content (Key Features) */
+    min-height: 450px; 
+}
+.project-card h5 { margin-top: 0; font-size: 1.5em; color: #333; }
+.project-card h6 { margin: 10px 0 5px 0; font-size: 1em; color: #555; }
+.project-card .Address { color: #555; }
+.project-card .information { font-size: 0.9em; margin-bottom: 10px; }
+
+.status { padding: 5px 10px; border: none; border-radius: 5px; font-size: 0.9em; font-weight: bold; margin-bottom: 10px; align-self: flex-start; }
+.status-uc { background-color: #ffcc00; color: #333; }
+.status-planning { background-color: #60a5fa; color: white; }
+.status-completed { background-color: #10b981; color: white; }
+
+.SpaceDate { display: flex; justify-content: space-between; font-size: 0.9em; margin-bottom: 15px; }
+.SpaceDate i { color: #FFD43B; margin-right: 5px; }
+
+.featbtns { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; }
+.featbtns .Features { background-color: #e9ecef; color: #333; border: none; padding: 5px 10px; border-radius: 3px; font-size: 0.8em; }
+
+.viewbtn-container { text-align: center; margin-top: auto; }
+.viewDetails { background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1em; transition: background-color 0.3s; width: 100%; }
+.viewDetails:hover { background-color: #0056b3; }
+
+
+/* --- Modal/Popup Styling --- */
+.modal-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); z-index: 1000; overflow-y: auto; 
+    display: flex; justify-content: center; align-items: flex-start;
+}
+.details {
+    background-color: #fff; width: 95%; max-width: 800px; margin: 40px auto; 
+    padding: 30px; border-radius: 10px; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    position: relative; box-sizing: border-box; 
+}
+.closeBtn {
+    position: absolute; top: 10px; right: 20px; font-size: 2em; font-weight: bold;
+    color: #333; border: none; background: none; cursor: pointer;
+}
+
+/* Modal Inner Content Styling */
+.ProjectHeader { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+.ProjectHeader h5 { font-size: 1.8em; margin: 0; }
+.ProjectOverview h5, .AmenitiesFetures h5, .Specifications h6 { color: #007bff; border-left: 4px solid #007bff; padding-left: 10px; margin: 20px 0 10px; }
+.infraBlockDetails { display: flex; gap: 20px; flex-wrap: wrap; }
+.infra { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; flex-grow: 1; min-width: 300px; }
+.infra1, .infra2, .infra3, .infra4 { border: 1px solid #ddd; padding: 10px; border-radius: 5px; font-size: 0.9em; text-align: center; line-height: 1.4; }
+.infra1 br, .infra2 br, .infra3 br, .infra4 br { display: block; margin-bottom: 3px; }
+.infra4 button { margin-top: 5px; }
+
+.blockDetail { flex-grow: 1; min-width: 250px; }
+.blockDetail button { padding: 8px 15px; margin: 5px; border: 1px solid #007bff; background: #eaf4ff; color: #007bff; border-radius: 20px; }
+
+.AmenitiesFetures ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.AmenitiesFetures li { background: #f0f0f0; padding: 5px 10px; border-radius: 5px; font-size: 0.9em; }
+
+.Specifications { margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 15px; }
+.Specifications h6 { color: #555; margin-top: 10px; margin-bottom: 2px; }
+.Specifications p { margin-top: 0; font-size: 0.9em; }
+
+.contact { background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: center; }
+.contact h4 { color: #333; margin-top: 0; }
+.contactPara { color: #666; font-size: 0.9em; }
+.ContactBtn { background-color: #28a745; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 1.1em; transition: background-color 0.3s; }
+.ContactBtn:hover { background-color: #1e7e34; }
+
+
+/* --- RESPONSIVENESS (Grid and Height Fixes) --- */
+
+/* Max width 1000px: Change 4-col completed grid to 3 columns */
+@media (max-width: 1000px) {
+    .completed-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Max width 768px: Change both grids to 2 columns */
+@media (max-width: 768px) {
+    .ongoing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .completed-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .project-card { min-height: 480px; } /* Adjust card height for two columns */
+
+    /* *** SCOPED HEIGHT FIX *** This applies different minimum heights to the two main sections 
+       to prevent layout jump when switching tabs, based on the number of rows.
+    */
+    /* Ongoing: 3 cards (2 rows needed) */
+    .sfDelivered1 { 
+        min-height: 1200px; 
+    }
+    /* Completed: 4 cards (2 rows needed, but slightly more vertical space used) */
+    .sfDelivered2 { 
+        min-height: 1250px; 
+    }
+    
+    .infra { grid-template-columns: 1fr; } /* Stack infra details in modal */
+}
+
+/* Max width 550px: Change both grids to 1 column (Mobile view) */
+@media (max-width: 550px) {
+    .ongoing-grid, .completed-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Stack tab buttons vertically */
+    .btnContainer {
+        display: flex; flex-direction: column; gap: 10px;
+    }
+    .btn1, .btn2 {
+        width: 100%; margin: 0;
+    }
+    .project-card { min-height: 400px; } /* Card height for single column */
+
+    /* *** SCOPED HEIGHT FIX *** */
+    /* Ongoing: 3 cards (3 rows needed) */
+    .sfDelivered1 { 
+        min-height: 1850px; 
+    }
+    /* Completed: 4 cards (4 rows needed) */
+    .sfDelivered2 { 
+        min-height: 2350px; 
+    }
+
+    .details { margin: 20px auto; padding: 20px; } /* Adjust modal padding */
+}

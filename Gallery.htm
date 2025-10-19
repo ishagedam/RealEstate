@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.2.2/dist/locomotive-scroll.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+     <img src="/assetss/removebg-preview.png" alt="Swaraj Builders Logo" style="height: 60px;">
+      </div>
+       <div><h4>Swaraj Builders</h4></div>
+         
+     <div class="containerr">
+       <div class="menu-icon"><i class="fa fa-bars"></i></div>
+        <div class="navpart2"> 
+        <a href="./index.htm">Home</a>
+        <a href="./AboutUs.htm">About Us</a>
+        <a href="./Sites.htm">Sites</a>
+        <a href="./Gallery.htm">Gallery</a>
+        <a href="./Contact.htm">Contact</a>
+       </div>
+     </div>
+    </div> 
+
+
+<div class="gallyyyyyyyyyyy">
+
+<section class="main-section">
+
+  <div class="card-left">
+    <h1>Our</h1>
+  </div>
+
+
+  <div class="card-right">
+    <div class="card-inner">
+      <div class="card-front">Gallery</div>
+      <div class="card-back">Gallery
+          <video src="./assetss/WhatsApp Video 2025-09-27 at 15.02.13_e3d94c8f.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+    <div class="gallary">
+      <div class="galsection">
+      
+    <div class="allimg">
+      <div class="slide1">
+        <div class="slidetext"><h4 class="slideheading">Swaraj Heights</h4>  <div class="lilpara">Exterior residential</div> 
+           <div class="bigpara">Modern apartment complex with contemporary architecture</div>
+         </div>
+        <div class="imgbox"><img src="https://i.pinimg.com/1200x/e3/70/9d/e3709d99c1cedcf3c8511f7e2ee1d073.jpg" height="300px" width="500px" alt=""></div>
+      </div>
+
+
+       <div class="slide2">
+         <div class="imgbox"><img src="./assetss/house5jpg.jpg" height="300px" width="500px" alt=""></div>
+           <div class="slidetext"><h4 class="slideheading"> Business Center</h4>  <div class="lilpara"> - Lobby Commercial</div> 
+           <div class="bigpara">Elegant entrance lobby with premium finishes</div>
+         </div>
+      </div>
+    </div>
+
+
+       
+    <div class="allimg2">
+      <div class="slide3">
+        <div class="slidetext"><h4 class="slideheading">Construction Progress</h4>  <div class="lilpara">Construction</div> 
+           <div class="bigpara">Latest updates from our ongoing projects</div>
+         </div>
+        <div class="imgbox"><img src="https://i.pinimg.com/736x/73/46/33/7346331e3448c328572ccf70e4b6543e.jpg" height="300px" width="500px" alt=""></div>
+      </div>
+
+
+       <div class="slide4">
+         <div class="imgbox"><img src="https://i.pinimg.com/1200x/8c/79/bf/8c79bff1c4799abbbe7299d93bc3ea50.jpg" height="300px" width="500px" alt=""></div>
+           <div class="slidetext"><h4 class="slideheading"> Luxury Villa - Garden</h4>  <div class="lilpara"> residential</div> 
+           <div class="bigpara">Beautiful landscaped garden in our villa project</div>
+         </div>
+      </div>
+    </div>
+
+      <div class="allimg3">
+      <div class="slide5">
+        <div class="slidetext"><h4 class="slideheading">Office Interior</h4>  <div class="lilpara">Commercial</div> 
+           <div class="bigpara">Modern office space with state-of-the-art facilities</div>
+         </div>
+        <div class="imgbox"><img src="https://i.pinimg.com/1200x/96/2f/b0/962fb0907e0352d12913e33174d8bc3c.jpg" height="300px" width="500px" alt=""></div>
+      </div>
+
+
+       <div class="slide6">
+         <div class="imgbox"><img src="https://i.pinimg.com/1200x/3a/39/d0/3a39d042d3ba4e0a8a2bef58354812f1.jpg" height="300px" width="500px" alt=""></div>
+           <div class="slidetext"><h4 class="slideheading"> Foundation Work</h4>  <div class="lilpara">Construction</div> 
+           <div class="bigpara">Strong foundation work ensuring long-lasting structures</div>
+         </div>
+      </div>
+    </div>
+ </div>
+
+</div>
+
+
+
+
+<div class="uploadSection">
+  <h3>Add Photo or Video</h3>
+  <button id="addMediaBtn">Select Media</button>
+  <input type="file" id="mediaInput" accept="image/*,video/*" style="display:none">
+</div>
+
+<hr>
+
+<div class="gallerySection">
+  <h3>Uploaded Media</h3>
+  <div id="uploadedGallery" class="uploadedGallery"></div>
+
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.2.2/dist/locomotive-scroll.min.js"></script> 
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
