@@ -325,10 +325,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
    //contact page animation
-   gsap.from(".Enquiryhead .Enquiry",{x:20, duration:2, opacity:0,scrollTrigger:{trigger:".Enquiryhead,.Enquiry",start:"top 80%",markers:true}})
-   gsap.from(".Enquiryhead .Enquirypara",{x:20, duration:2, opacity:0,delay:1,scrollTrigger:{trigger:".Enquiryhead,.Enquirypara",start:"top 90%",markers:true}})
-   gsap.from("#contactForm",{y:20,duration:2,opacity:0,scrollTrigger:{trigger:"#contactForm",start:"top 90%",markers:true}})
-   gsap.from(".contacthead",{y:30,duration:2,opacity:0,scrollTrigger:{trigger:".contacthead",start:"top 90%",markers:true}})
+   gsap.from(".Enquiryhead .Enquiry",{x:20, duration:2, opacity:0,scrollTrigger:{trigger:".Enquiryhead,.Enquiry",start:"top 80%"}})
+   gsap.from(".Enquiryhead .Enquirypara",{x:20, duration:2, opacity:0,delay:1,scrollTrigger:{trigger:".Enquiryhead,.Enquirypara",start:"top 90%"}})
+   gsap.from("#contactForm",{y:20,duration:2,opacity:0,scrollTrigger:{trigger:"#contactForm",start:"top 90%"}})
+   gsap.from(".contacthead",{y:30,duration:2,opacity:0,scrollTrigger:{trigger:".contacthead",start:"top 90%"}})
   }); 
 
 

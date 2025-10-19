@@ -197,13 +197,10 @@ p{
   font-size: large; 
 }
  button2 {
-    background-color:#895E7D; 
    border: 2px solid #ee955d;
-  
-background-image: url( "https://i.pinimg.com/736x/68/c2/ab/68c2ab85d02fc1873fb798b6ed8ee9fc.jpg");}
+  }
 
  button1 {
-    background-color:#4C0F2E; 
    border: 2px solid #ee955d;
 }
 .imgContainer img::after {   /* for black scrren */
