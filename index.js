@@ -299,10 +299,12 @@ document.addEventListener("DOMContentLoaded", () => {
    gsap.from(".gallary .allimg .slide1 .slidetext",{x:-50,duration:1,opacity:0, ease:"power3.out", scrollTrigger:{trigger:".gallary .allimg .slide1 .slidetext",start:"top 80%"}});
    gsap.from(".gallary .allimg .slide1 .imgbox",{x:50,duration:1,opacity:0,delay:1, ease:"power3.out", scrollTrigger:{trigger:".gallary .allimg .slide1 .slidetext",start:"top 80%"}});
 
-    gsap.from(".gallary .allimg .slide2 .slidetext",{x:50,duration:1, delay:1.3,opacity:0, ease:"power3.out", scrollTrigger:{trigger:".gallary .allimg .slide1 .slidetext",start:"top 80%"}});
+   gsap.from(".gallary .allimg .slide2 .slidetext",{x:50,duration:1, delay:1.3,opacity:0, ease:"power3.out", scrollTrigger:{trigger:".gallary .allimg .slide1 .slidetext",start:"top 80%"}});
    gsap.from(".gallary .allimg .slide2 .imgbox",{x:-50,duration:1, delay:1.6,opacity:0, ease:"power3.out", scrollTrigger:{trigger:".gallary .allimg .slide1 .slidetext",start:"top 80%"}});
 
-    gsap.from(".gallary .allimg2 .slide3 .slidetext",{x:-50,duration:1, delay:1.9,opacity:0, ease:"power3.out", scrollTrigger:{trigger:".gallary .allimg .slide1 .slidetext",start:"top 80%"}});
+   
+   
+   gsap.from(".gallary .allimg2 .slide3 .slidetext",{x:-50,duration:1, delay:1.9,opacity:0, ease:"power3.out", scrollTrigger:{trigger:".gallary .allimg .slide1 .slidetext",start:"top 80%"}});
    gsap.from(".gallary .allimg2 .slide3 .imgbox",{x:50,duration:1, delay:2.2,opacity:0, ease:"power3.out", scrollTrigger:{trigger:".gallary .allimg .slide1 .slidetext",start:"top 80%"}});
 
     gsap.from(".gallary .allimg2 .slide4 .slidetext",{x:50,duration:1, delay:2.6,opacity:0, ease:"power3.out", scrollTrigger:{trigger:".gallary .allimg .slide1 .slidetext",start:"top 80%"}});
