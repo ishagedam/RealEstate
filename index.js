@@ -178,17 +178,17 @@ document.addEventListener("DOMContentLoaded", () => {
     y: -20,
     opacity: 0,
     duration: 0.9,
-    stagger: 0.15,   // gap between each link’s start
-    delay: 0.3,      // wait before starting the whole group
+    stagger: 0.15,   
+    delay: 0.3,      
     ease: "power3.out"
   });
 
-  // ---------------- Hero Section Animations ----------------
+  
   gsap.from(".contain h1", { duration: 1.5, y: 80, opacity: 0, stagger: 0.12 });
   gsap.from(".contain p", { duration: 1.2, y: 50, opacity: 0 });
   gsap.from(".contain .Buttons", { duration: 1.5, y: 80, opacity: 0 });
 
-  // ---------------- Navbar Heading (SplitType) ----------------
+
   const splitNav = new SplitType(".navbar h4", { types: "chars" });
   gsap.from(splitNav.chars, { y: -20, opacity: 0, duration: 0.5, stagger: 0.1 });
 
@@ -245,11 +245,10 @@ gsap.from(".About .team-section .teamHead ",{ duration:2, rotate:-145,opacity:0,
 
 
 
-  // Use GSAP's timeline for sequencing animations
   const tl = gsap.timeline();
 
-  // Then, animate the cards
-  tl.to(".member-card", {opacity: 1, y: 0, duration: 1, stagger: 0.3, // Animate each card with a 0.3-second delay
+
+  tl.to(".member-card", {opacity: 1, y: 0, duration: 1, stagger: 0.3, 
     ease: "power2.out",
     scrollTrigger:{
       trigger:".member-card",
@@ -375,10 +374,9 @@ document.querySelector(".videocard2").addEventListener("click", () => {
     display:flex;align-items:center;justify-content:center;z-index:9999;
   `;
 
-  // clone the existing video so it stays on the page
   const video = document.querySelector(".videocard2 video").cloneNode(true);
   video.style = "max-width:90%;max-height:90%";
-   video.setAttribute("controls", "true"); // show controls
+   video.setAttribute("controls", "true");
   video.play(); 
 
   const closeBtn = document.createElement("button");

@@ -1297,7 +1297,7 @@ body.modal-open {
 
 .Specifications { margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 15px; }
 .Specifications h6 { color: #555; margin-top: 10px; margin-bottom: 2px; }
-.Specifications p { margin-top: 0; font-size: 0.9em; }
+.Specifications p { margin-top: 0; font-size: 0.9em;color:rgb(129, 126, 126) }
 
 .contact { background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: center; }
 .contact h4 { color: #333; margin-top: 0; }
