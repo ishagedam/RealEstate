@@ -3,8 +3,8 @@
     padding: 0;
     margin: 0;
     -webkit-font-smoothing:antialised;
-      
- 
+    
+    
     
 }
 
@@ -12,6 +12,9 @@ body{
     height: 100%;
     width: 100%;
     font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+   
+   
 }
 
 
@@ -63,16 +66,16 @@ a{
   color: #DAC064;    
 }
 .navpart2 a:hover::after {
-  width: 100%;   /* underline expands fully on hover */
+  width: 100%;  
 }
 .navpart2 a::after {
-  content: "";                  /* creates fake underline */
+  content: "";                
   position: absolute;
   left: 0;
-  bottom: -2px;                 /* sits below text */
-  width: 0%;                    /* hidden initially */
-  height: 2px;                  /* line thickness */
-  background-color: #DAC064;    /* gold color (you can change to #CDA434 if you want contrast) */
+  bottom: -2px;                
+  width: 0%;                   
+  height: 2px;                
+  background-color: #DAC064;    
   transition: width 0.3s ease-in-out;
 }
 .menu-icon {
@@ -111,8 +114,34 @@ a{
 
 
 
+@media screen and (max-width: 768px) {
+  .navpart2 {
+    display: none;
+    flex-direction: column;
+    background-color: transparent; 
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    gap: 15px;
+    box-shadow: 0 0 10px rgba(218, 192, 100, 0.3);
+    z-index: 9999; 
+  }
 
+  .navpart2.active {
+    display: flex;
+  }
 
+  .menu-icon {
+    display: block;
+    z-index: 10000; 
+  }
+
+  .navpart2 a {
+    pointer-events: auto; 
+  }
+}
 
 
 
@@ -172,22 +201,6 @@ p{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  button1, button2{
 
   color: rgb(224, 220, 220);
@@ -203,7 +216,7 @@ p{
  button1 {
    border: 2px solid #ee955d;
 }
-.imgContainer img::after {   /* for black scrren */
+.imgContainer img::after { 
   content: "";
   position: absolute;
   top: 0;
@@ -241,7 +254,6 @@ margin-left: 0%;
     height: 100vh;
    
       display: flex;
-    flex-wrap: wrap;       /* let the columns wrap on small screens */
     align-items: stretch;
 }
 
@@ -267,11 +279,11 @@ sp{
 
 
 
-/* WHITE SECTION FIX */
+
 .serviceBox {
-    width: 55%;          /* keep beside black section on large screens */
-    margin: 0;           /* remove top margin */
-    padding: 3rem 2rem;  /* add padding inside */
+    width: 55%;         
+    margin: 0;         
+    padding: 3rem 2rem;  
     background-color: #0c0c0c;
     display: flex;
     justify-content: center;
@@ -279,7 +291,7 @@ sp{
 
 .Boxes {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on desktop */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 30px;
     justify-items: center;
     width: 100%;
@@ -287,9 +299,9 @@ sp{
 
 box {
     width: 100%;
-    max-width: 300px;   /* control box width */
+    max-width: 300px;  
     min-width: 250px;
-    height: auto;       /* let content determine height */
+    height: auto;    
     background-color: rgb(36, 35, 37);
     border-radius: 5px;
     padding: 20px;
@@ -333,7 +345,7 @@ box-Text p1, box-Text p2, box-Text p3, box-Text p4 {
         height: auto;   
     }
     .Boxes {
-        grid-template-columns: 1fr; /* single column on mobile */
+        grid-template-columns: 1fr; 
         gap: 20px;
     }
     box {
@@ -344,8 +356,8 @@ box-Text p1, box-Text p2, box-Text p3, box-Text p4 {
 @media screen and (max-width: 821px) {
   .serviceA,
   .serviceBox {
-      width: 100%;      /* take the whole width, one on top of the other */
-      min-height: auto; /* let height grow with content */
+      width: 100%;      
+      min-height: auto; 
   }
 }
 
@@ -362,9 +374,9 @@ box-Text p1, box-Text p2, box-Text p3, box-Text p4 {
   display: flex;
   justify-content: space-evenly;
 
-   clear: both;        /* prevent floating overlap */
-    margin-top: 40px;   /* breathing room */
-    position: relative; /* stay in normal flow */
+   clear: both;       
+    margin-top: 40px;   
+    position: relative;
     z-index: 1;
   
   
@@ -825,11 +837,17 @@ margin-bottom: 30%;
 .teamHead{
   padding: 30px;
   background-color: rgb(84, 72, 84);
-  width: 50%;
+  width: 80%;
 }
 
 @media screen and(max-width:1259px) {
-  
+  .teamHead{
+  width: 100%;
+
+  }
+}
+
+@media screen and(max-width:600px) {
   .teamHead{
   width: 100%;
 
@@ -918,7 +936,7 @@ h3{
  
 }
 
-/* Team Section - Horizontal Scroll */
+
 .team-container {
   display: flex;
   gap: 20px;                  
@@ -1763,9 +1781,16 @@ letter-spacing: 0.1rem;
 
 
 
+
+
+
 .uploadSection {
   margin: 20px 0;
   text-align: center;
+}
+
+.uploadSection h3 {
+  margin-bottom: 10px;
 }
 
 .uploadSection button {
@@ -1783,8 +1808,13 @@ letter-spacing: 0.1rem;
   background-color: #2563eb;
 }
 
+hr {
+  margin: 30px 0;
+  border: 1px solid #e5e7eb;
+}
+
 .gallerySection {
-  margin-top: 20px;
+  text-align: center;
 }
 
 .uploadedGallery {
@@ -1792,6 +1822,7 @@ letter-spacing: 0.1rem;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .galleryItem {
@@ -1804,20 +1835,14 @@ letter-spacing: 0.1rem;
   align-items: center;
   justify-content: center;
   background-color: #f3f4f6;
-  position: relative;
 }
 
-.galleryItem img,
-.galleryItem video {
+.galleryItem img {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
-}
-
-.galleryItem video {
   border-radius: 8px;
 }
-
 
 
 
@@ -2154,37 +2179,6 @@ color: crimson;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
-
-/* Root Variables for Colors & Fonts */
 :root {
     --color-primary: #0f172a;
     --color-accent: #c9b078;
@@ -2201,7 +2195,7 @@ color: crimson;
     height: 100%;
 }
 
-/* Header */
+
 .services-header-box {
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -2240,7 +2234,6 @@ color: crimson;
     margin: 0;
 }
 
-/* Cards Grid */
 .services-grid {
     padding: 5rem 5vw;
 }
@@ -2394,7 +2387,7 @@ body {
     margin: 0;
 }
 
-/* --- CTA Banner --- */
+
 .cta-banner {
     background: var(--color-primary);
     color: var(--color-white);
@@ -2447,7 +2440,7 @@ body {
 }
 
 
-/* General responsiveness */
+
 body, html {
     box-sizing: border-box;
 }
@@ -2465,15 +2458,6 @@ body, html {
 
 
 
-
-
-
-
-
-
-
-
-/* Make Services and Why Choose stacked on smaller screens */
 @media (max-width: 1359px) {
     .services-area, 
     .why-choose {
@@ -2523,7 +2507,7 @@ body, html {
         }
 }
 
-/* Additional adjustments for smaller devices */
+
 @media (max-width: 1024px) {
     .contain {
         padding: 0 1rem;
@@ -2556,7 +2540,7 @@ body, html {
     }
 }
 
-/* Responsive */
+
 @media scrren and (max-width: 793px) {
     .cta-banner {
         flex-direction: column;
@@ -2609,7 +2593,7 @@ body, html {
     }
 }
 
-/* --- Footer --- */
+
 .footer-content {
     background-color: var(--color-dark);
     color: var(--color-white);
@@ -2668,11 +2652,11 @@ body, html {
 
 
 
-/* ✅ Small screen fixes only */
+
 @media screen and (max-width: 793px) {
   .services-area,
   .why-choose {
-    height: auto; /* let content define height */
+    height: auto; 
   }
 
   .cta-banner {
@@ -2706,4 +2690,93 @@ body, html {
 }
 
 
+#property-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
 
+.property-card {
+  background: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.property-card:hover {
+  transform: scale(1.03);
+}
+
+.property-card h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.property-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+
+/* 
+========================            SIGNUP SIGN IN PAGE       ================================================== */
+
+.page{
+  height: 100vh;
+  width: 100vw;
+  background-image: url("/assetss/Rowhouse2.jpg");
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.section{
+ height: 80vh;
+ width:  70vw;
+ background-color: transparent;
+ display: flex;
+}
+.sec1{
+height: 80vh;
+width: 50vw;
+background-color: pink;
+}
+
+.sec2{
+height: 80vh;
+width: 50vw;
+background-color: transparent;
+border: 2px solid white;
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+}
+form{
+  height: 40vh;
+  width: 30vw;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+}
+input{
+  height: 1.5rem;
+  width: 15rem;
+}
+.logos{
+  height: 20vh;
+  width: 20vw;
+  background-color: blue;
+}
+logo{
+  height: 5rem;
+  width: 5rem;
+  background-color: yellow;
+  border-radius: 50%;
+}

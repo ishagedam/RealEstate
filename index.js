@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- 1. Tab Switching Logic ---
     const ongoingBtn = document.getElementById('ongoingBtn');
     const completedBtn = document.getElementById('completedBtn');
-    // Targets the separate <section> elements (your sfDelivered1 and sfDelivered2)
+
     const ongoingSection = document.getElementById('ongoingSection');
     const completedSection = document.getElementById('completedSection');
 
@@ -18,16 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
         activeBtn.classList.add('active-tab');
         inactiveBtn.classList.remove('active-tab');
         
-        // Start the fade-out/hide on the inactive container
+
         inactiveContent.classList.remove('active-content');
 
-        // Delay the fade-in of the active container (allows the display:none to switch to display:block)
+       
         setTimeout(() => {
             activeContent.classList.add('active-content');
         }, 10); 
     }
 
-    // Event Listeners for tab buttons
+
     ongoingBtn.addEventListener('click', function() {
         switchTab(ongoingBtn, ongoingSection, completedBtn, completedSection);
     });
@@ -36,36 +36,34 @@ document.addEventListener("DOMContentLoaded", () => {
         switchTab(completedBtn, completedSection, ongoingBtn, ongoingSection);
     });
 
-    // --- 2. Modal/Popup Logic ---
+  
     
     const body = document.body;
     const viewDetailsButtons = document.querySelectorAll('.viewDetails');
     const modalContainers = document.querySelectorAll('.modal-container');
     const closeButtons = document.querySelectorAll('.closeBtn');
     
-    // Function to HIDE MODAL and ALLOW BODY SCROLLING
     function hideModal(modalElement) {
         modalElement.style.display = 'none';
-        modalElement.classList.remove('is-open'); // Remove temporary state class
+        modalElement.classList.remove('is-open'); 
         body.classList.remove('modal-open'); 
     }
 
-    // Function to SHOW MODAL and PREVENT BODY SCROLLING
     viewDetailsButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Gets the ID from the 'data-modal' attribute in the HTML button
+           
             const modalId = this.getAttribute('data-modal');
             const modalToShow = document.getElementById(modalId);
 
             if (modalToShow) {
-                modalToShow.style.display = 'flex'; // Show modal
-                modalToShow.classList.add('is-open'); // Mark as open for ESC key/overlay listener
-                body.classList.add('modal-open'); // Stops background scrolling
+                modalToShow.style.display = 'flex';
+                modalToShow.classList.add('is-open'); 
+                body.classList.add('modal-open');
             }
         });
     });
 
-    // Event listeners for close buttons
+    
     closeButtons.forEach(button => {
         button.addEventListener('click', function() {
             const modalToHide = button.closest('.modal-container');
@@ -75,17 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
     
-    // Hide modal if user clicks outside the modal content (on the dark overlay)
     modalContainers.forEach(container => {
         container.addEventListener('click', function(event) {
-            // Check if the click target is the container itself, not a child element
+            
             if (event.target === container) {
                 hideModal(container);
             }
         });
     });
 
-    // Optional: Hide modal on ESC key press
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             const openModal = document.querySelector('.modal-container.is-open'); 
@@ -108,18 +104,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  //gallaery uploaded section
+
 
   const addMediaBtn = document.getElementById("addMediaBtn");
   const mediaInput = document.getElementById("mediaInput");
   const uploadedGallery = document.getElementById("uploadedGallery");
 
-  // Open file manager
   addMediaBtn.addEventListener("click", () => {
     mediaInput.click();
   });
 
-  // Handle file selection
+
   mediaInput.addEventListener("change", () => {
     const file = mediaInput.files[0];
     if (!file) return;
@@ -161,6 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
   // ---------------- Menu Toggle ----------------
   const menuIcon = document.querySelector('.menu-icon i');
   const navPart2 = document.querySelector('.navpart2');
@@ -191,6 +189,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const splitNav = new SplitType(".navbar h4", { types: "chars" });
   gsap.from(splitNav.chars, { y: -20, opacity: 0, duration: 0.5, stagger: 0.1 });
+
+
+
+
+
+
+
 
   
 
@@ -345,7 +350,7 @@ document.querySelector(".videocard1").addEventListener("click", () => {
     position:fixed;inset:0;background:rgba(0,0,0,.8);
     display:flex;align-items:center;justify-content:center;z-index:9999;
   `;
-
+ 
   
   const video = document.querySelector(".videocard1 video").cloneNode(true);
   video.style = "max-width:90%;max-height:90%";
@@ -391,170 +396,6 @@ document.querySelector(".videocard2").addEventListener("click", () => {
   document.body.appendChild(overlay);
 });
 
-
-
-
-
-
-// const btn1 = document.querySelector(".btn1");
-// const btn2 = document.querySelector(".btn2");
-// const main1 = document.querySelector(".main1");
-// const main2 = document.querySelector(".main2")
-// const sfDelivered1 = document.querySelector(".sfDelivered1")
-
-
-// btn1.addEventListener("click", () => {
-//   main1.style.display = "flex";  
-//   main2.style.display = "none";
- 
-// });
-
-// btn2.addEventListener("click", () => {                                
-//   main1.style.display = "none";
-//   main2.style.display = "flex";   
-
-   
-    
-// });
-
-
-
-// function showOngoing() {
-//       main1.style.display = "grid";
-//       main2.style.display = "none";
-//       btn1.classList.add("active-tab");
-//       btn2.classList.remove("active-tab");
-
-//       // Animate cards
-//       gsap.from(".main1 .project-card", {opacity:0, y:50, stagger:0.2, duration:0.5});
-//     }
-
-//     function showCompleted() {
-//       main2.style.display = "grid";
-//       main1.style.display = "none";
-//       btn2.classList.add("active-tab");
-//       btn1.classList.remove("active-tab");
-
-//       gsap.from(".main2 .project-card", {opacity:0, y:50, stagger:0.2, duration:0.5});
-//     }
-
-//     btn1.addEventListener("click", showOngoing);
-//     btn2.addEventListener("click", showCompleted);
-
-  
-    // showOngoing();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const viewbtn1 = document.querySelector(".viewbtn1");
-// const hiddenDetails1 = document.querySelector(".hiddenDetails1");
-// viewbtn1.addEventListener("click",()=>{
-//   hiddenDetails1.style.display ="flex";
-// });
-
-
-// const viewbtn2 = document.querySelector(".viewbtn2");
-// const hiddenDetails2 = document.querySelector(".hiddenDetails2");
-// viewbtn2.addEventListener("click",()=>{
-//   hiddenDetails2.style.display ="flex";
-// });
-
-// const viewbtn3 = document.querySelector(".viewbtn3");
-// const hiddenDetails3 = document.querySelector(".hiddenDetails3");
-// viewbtn3.addEventListener("click",()=>{
-//   hiddenDetails3.style.display ="flex";
-// });
-
-
-// const viewbtn4 = document.querySelector(".viewbtn4");
-// const hiddenDetails4 = document.querySelector(".hiddenDetails4");
-// viewbtn4.addEventListener("click",()=>{
-//   hiddenDetails4.style.display ="flex";
-// });
-
-
-// const viewbtn5 = document.querySelector(".viewbtn5");
-// const hiddenDetails5 = document.querySelector(".hiddenDetails5");
-// viewbtn5.addEventListener("click",()=>{
-//   hiddenDetails5.style.display ="flex";
-// });
-
-
-// const viewbtn6 = document.querySelector(".viewbtn6");
-// const hiddenDetails6 = document.querySelector(".hiddenDetails6");
-// viewbtn6.addEventListener("click",()=>{
-//   hiddenDetails6.style.display ="flex";
-// });
-
-// const viewbtn7 = document.querySelector(".viewbtn7");
-// const hiddenDetails7 = document.querySelector(".hiddenDetails7");
-// viewbtn7.addEventListener("click",()=>{
-//   hiddenDetails7.style.display ="flex";
-// });
-
-
-
-
-
-
-
-// const viewButtons = document.querySelectorAll("[class^='viewbtn']");
-// const hiddenDetails = document.querySelectorAll("[class^='hiddenDetails']");
-// const closeBtns = document.querySelectorAll(".closeBtn");
-
-
-// viewButtons.forEach((btn, index) => {
-//   btn.addEventListener("click", () => {
-//     if (hiddenDetails[index]) {
-//       hiddenDetails[index].style.display = "flex";
-//       document.body.style.overflow = "hidden"; // lock background scroll
-//     }
-//   });
-// });
-
-
-// closeBtns.forEach(btn => {
-//   btn.addEventListener("click", () => {
-//     const parentOverlay = btn.closest("[class^='hiddenDetails']");
-//     if (parentOverlay) {
-//       parentOverlay.style.display = "none";
-//       document.body.style.overflow = "auto"; 
-//     }
-//   });
-// });
-
-
-// hiddenDetails.forEach(overlay => {
-//   overlay.addEventListener("click", e => {
-//     if (e.target === overlay) {
-//       overlay.style.display = "none";
-//       document.body.style.overflow = "auto";
-//     }
-//   });
-// });
 
 
 
@@ -609,114 +450,30 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
-  // ---------------- File Picker ----------------
-  const openFileBtn = document.getElementById("openFileBtn");
-  const fileInput = document.getElementById("fileInput");
+const addImageBtn = document.getElementById("addImageBtn");
+const imageInput = document.getElementById("imageInput");
+const gallery = document.getElementById("uploadedGallery");
 
-  if (openFileBtn && fileInput) {
-    openFileBtn.addEventListener("click", () => {
-      fileInput.click(); // opens file manager
-    });
+addImageBtn.onclick = () => imageInput.click();
 
-    fileInput.addEventListener("change", () => {
-      if (fileInput.files.length > 0) {
-        console.log("Selected file:", fileInput.files[0].name);
-        alert("You selected: " + fileInput.files[0].name);
-      }
-    });
-  } else {
-    console.error("File picker elements not found!");
-  }
+imageInput.onchange = () => {
+  const file = imageInput.files[0];
+  if (!file) return;
+
+  const item = document.createElement("div");
+  item.classList.add("galleryItem");
+
+  const img = document.createElement("img");
+  img.src = URL.createObjectURL(file);
+
+  item.appendChild(img);
+  gallery.appendChild(item);
+
+  imageInput.value = "";
+};
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -774,14 +531,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Function to HIDE MODAL and ALLOW BODY SCROLLING
+    
     function hideModal(modalElement) {
         modalElement.style.display = 'none';
         // Remove class to allow background scrolling
         body.classList.remove('modal-open'); 
     }
 
-    // Event listeners for close buttons
+   
     closeButtons.forEach(button => {
         button.addEventListener('click', function() {
             const modalToHide = button.closest('.modal-container');
@@ -791,7 +548,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Hide modal if user clicks outside the modal content (on the overlay)
     modalContainers.forEach(container => {
         container.addEventListener('click', function(event) {
             if (event.target === container) {
@@ -800,7 +556,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Optional: Hide modal on ESC key press
+  
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             const openModal = document.querySelector('.modal-container[style*="display: flex"]');
@@ -808,5 +564,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 hideModal(openModal);
             }
         }
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ JS Loaded");
+
+  fetch("/api/properties")
+    .then(response => {
+      if (!response.ok) throw new Error("Network response was not ok");
+      return response.json();
+    })
+    .then(data => {
+      console.log("✅ Data fetched:", data);
+
+      const container = document.getElementById("property-list");
+      if (!container) {
+        console.error("❌ 'property-list' div not found");
+        return;
+      }
+
+      container.innerHTML = ""; // Clear "Loading..." text
+
+      if (data.length === 0) {
+        container.innerHTML = "<p>No properties found.</p>";
+        return;
+      }
+
+      // Create property cards
+      data.forEach(property => {
+        const card = document.createElement("div");
+        card.className = "property-card";
+        card.innerHTML = `
+          <img src="${property.image}" alt="${property.title}" style="width:100%;border-radius:10px;margin-bottom:10px;">
+          <h2>${property.title}</h2>
+          <p><strong>Location:</strong> ${property.location}</p>
+          <p><strong>Price:</strong> ${property.price}</p>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error("❌ Error fetching properties:", error);
+      document.getElementById("property-list").innerHTML = "<p>Error loading properties.</p>";
     });
 });
