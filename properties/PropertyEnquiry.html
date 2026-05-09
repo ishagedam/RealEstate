@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Property Enquiry</title>
+  <link rel="stylesheet" href="./PropertyEnquiry.css">
+</head>
+<body>
+
+
+ <div class="navbar">
+    <div class="logo">
+     <img src="/assetss/removebg-preview.png" alt="Swaraj Builders Logo" style="height: 60px;">
+      </div>
+       <div><h6>Swaraj Builders</h6></div>
+         
+     <div class="containerr">
+       <div class="menu-icon"><i class="fa fa-bars"></i></div>
+        <div class="navpart2"> 
+        <a href="../index.html">Home</a>
+        <a href="../AboutUs.htm">About</a>
+         <a href="./property.htm">Properties</a>
+        <a href="../Sites.htm">Sites</a>
+        <a href="../Gallery.htm">Gallery</a>
+        <a href="../Contact.htm">Contact</a>
+        <a href="../SignUp-Login/signlog.htm">SignIn</a>
+       </div>
+     </div>
+    </div> 
+
+
+<div class="enquiry-page-wrapper">
+    <div class="overlay"></div> 
+    
+    <div class="content-container">
+    >
+        <div class="info-side">
+            <h1>Swaraj Builders</h1>
+            <p class="sub-heading">Luxury Living in the Heart of Pune</p>
+            <p>Experience a life of elegance and comfort. Our properties are designed for those who value premium quality, Vastu compliance, and modern architectural brilliance.</p>
+            
+            <div class="trust-badges">
+                <div class="badge"><span>✔</span> RERA Registered</div>
+                <div class="badge"><span>✔</span> 500+ Happy Families</div>
+                <div class="badge"><span>✔</span> Prime Locations</div>
+            </div>
+        </div>
+
+     
+        <div class="form-side">
+            <form id="propertyEnquiryForm">
+                <h2>Enquire Now</h2>
+                <input type="hidden" id="propertyId">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="text" id="mobile" placeholder="Mobile Number" required>
+                <textarea id="message" placeholder="Enter your message here..."></textarea>
+                
+                <button type="submit" class="glow-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="./propertyEnquiry.js"></script>
+</body>
+</html>

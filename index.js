@@ -1,10 +1,7 @@
+
 gsap.registerPlugin(ScrollTrigger);
+
 document.addEventListener("DOMContentLoaded", () => {
-
-
-  
-
-
 
 
     // --- 1. Tab Switching Logic ---
@@ -94,18 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   const addMediaBtn = document.getElementById("addMediaBtn");
   const mediaInput = document.getElementById("mediaInput");
   const uploadedGallery = document.getElementById("uploadedGallery");
@@ -150,15 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 
-
-
-
-
-
-
-
-
-
   // ---------------- Menu Toggle ----------------
   const menuIcon = document.querySelector('.menu-icon i');
   const navPart2 = document.querySelector('.navpart2');
@@ -187,22 +163,10 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.from(".contain .Buttons", { duration: 1.5, y: 80, opacity: 0 });
 
 
-  const splitNav = new SplitType(".navbar h4", { types: "chars" });
+  const splitNav = new SplitType(".navbar h6", { types: "chars" });
   gsap.from(splitNav.chars, { y: -20, opacity: 0, duration: 0.5, stagger: 0.1 });
 
 
-
-
-
-
-
-
-  
-
-  
-
-
-  
 
 
 
@@ -234,7 +198,7 @@ if (document.body.classList.contains("About")) {
     });
 
   
-  }
+  
 //===================  section 2
 
 gsap.from(".section2 .story-text  .heading",{ x:-100, duration:1, opacity:0 ,scrollTrigger:{trigger:".section2 .story-text  .heading",start:"top 100%"}})
@@ -272,23 +236,45 @@ gsap.from(".About .team-section .teamHead ",{ duration:2, rotate:-145,opacity:0,
       start:"top 90%",
     } 
   })
+}
 
-//=====================    section 5  =====================
-  gsap.from(".section5 .team-section .teamHead ",{ duration:2, rotate:-145,opacity:0, delay:1,scrollTrigger:{trigger:".section5 .team-section .teamHead" ,start:"top 80%"}})
-  gsap.from(".section5 .sldContainer ",{  x:100, duration:1.5, opacity:0, scrollTrigger:{trigger:".section5 .sldContainer", start:"top 80%"}})
-  gsap.from(".section5 .sldContainer h1",{  x:100, duration:1, delay:1,opacity:0, scrollTrigger:{trigger:".section5 .sldContainer h1" ,start:"top 80%"}})
-  gsap.from(".section5 .sldContainer h5",{  x:50, duration:2, delay:1.3, opacity:0, scrollTrigger:{trigger:".section5 .sldContainer h5" ,start:"top 90%"}})
-  gsap.from(".section5 .sldContainer p2",{  y:100, duration:2, delay:1.5, opacity:0, scrollTrigger:{trigger:".section5  .sldContainer p2" ,start:"top 90%"}})
-  gsap.from(".section5 .visitBox ",{  x:-90, duration:1, opacity:0, scrollTrigger:{trigger:".section5 .visitBox", start:"top90%"}})
-  gsap.from(".section5 .visitBox h4 ",{  x:-100, duration:1, delay:1.8,opacity:0, scrollTrigger:{trigger:".section5 .visitBox h4,p5", start:"top 90%"}})
-  gsap.from(".section5 .visitBox p5",{  x:100, duration:1,delay:1.8, opacity:0, scrollTrigger:{trigger:".section5 .visitBox h4,p5", start:"top 90%"}})
-  
-
-
+// //=====================    section 5  =====================
+//   gsap.from(".section5 .team-section .teamHead ",{ duration:2, rotate:-145,opacity:0, delay:1,scrollTrigger:{trigger:".section5 .team-section .teamHead" ,start:"top 80%"}})
+//   gsap.from(".section5 .sldContainer ",{  x:100, duration:1.5, opacity:0, scrollTrigger:{trigger:".section5 .sldContainer", start:"top 80%"}})
+//   gsap.from(".section5 .sldContainer h1",{  x:100, duration:1, delay:1,opacity:0, scrollTrigger:{trigger:".section5 .sldContainer h1" ,start:"top 80%"}})
+//   gsap.from(".section5 .sldContainer h5",{  x:50, duration:2, delay:1.3, opacity:0, scrollTrigger:{trigger:".section5 .sldContainer h5" ,start:"top 90%"}})
+//   gsap.from(".section5 .sldContainer p2",{  y:100, duration:2, delay:1.5, opacity:0, scrollTrigger:{trigger:".section5  .sldContainer p2" ,start:"top 90%"}})
+//   gsap.from(".section5 .visitBox ",{  x:-90, duration:1, opacity:0, scrollTrigger:{trigger:".section5 .visitBox", start:"top90%"}})
+//   gsap.from(".section5 .visitBox h4 ",{  x:-100, duration:1, delay:1.8,opacity:0, scrollTrigger:{trigger:".section5 .visitBox h4,p5", start:"top 90%"}})
+//   gsap.from(".section5 .visitBox p5",{  x:100, duration:1,delay:1.8, opacity:0, scrollTrigger:{trigger:".section5 .visitBox h4,p5", start:"top 90%"}})
 
 
+// }gsap.registerPlugin(ScrollTrigger);
 
+// LEFT CONTENT animation
+gsap.from(".sldContainer h1, .sldContainer h5, .sldContainer p", {
+  y: 60,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.3,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: ".section5",
+    start: "top 80%",
+  }
+});
 
+// VISIT BOX animation
+gsap.from(".visitBox", {
+  x: 120,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: ".visitBox",
+    start: "top 85%",
+  }
+});
 // =============================================== SITE PAGE JS ==================================================
 
 
@@ -420,27 +406,48 @@ flipCard.addEventListener('mouseleave', () => {
 
 
 
-
-
-
 // ===================================================       Contact js      ========================================================
+document.addEventListener("DOMContentLoaded", function () {
 
-const form = document.getElementById('contactForm');
+  const contactForm = document.getElementById("contactForm");
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent page reload
+  // 👉 jar form nahi asel tar kahi hi karu naka
+  if (!contactForm) return;
 
-      const formData = {
-        name: form.name.value,
-        email: form.email.value,
-        message: form.message.value
-      };
+  console.log("Contact form active ✅");
 
-      console.log('Form Submitted:', formData);
-      alert(`Thank you, ${formData.name}! Your message has been received.`);
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-      form.reset(); // Clear the form
-    });
+    console.log("Form submit 🚀");
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const mobile = document.getElementById("mobile").value;
+    const message = document.getElementById("message").value;
+
+    try {
+      const res = await fetch("http://localhost:5000/api/contact-message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, mobile, message })
+      });
+
+      const data = await res.json();
+      alert("Message sent successfully ✅");
+
+      contactForm.reset();
+    } catch (err) {
+      console.log(err);
+      alert("Error ❌");
+    }
+  });
+
+});
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -477,13 +484,8 @@ imageInput.onchange = () => {
 
 
 
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. Tab Switching Logic (Unchanged) ---
+  
     const ongoingBtn = document.getElementById('ongoingBtn');
     const completedBtn = document.getElementById('completedBtn');
     const ongoingSection = document.getElementById('ongoingSection');
@@ -509,23 +511,23 @@ document.addEventListener('DOMContentLoaded', function() {
     ongoingSection.classList.add('active-content');
 
 
-    // --- 2. Modal/Popup Logic (Modified to control body scroll and remove blur) ---
+
     
     const body = document.body;
     const viewDetailsButtons = document.querySelectorAll('.viewDetails');
     const modalContainers = document.querySelectorAll('.modal-container');
     const closeButtons = document.querySelectorAll('.closeBtn');
     
-    // Function to SHOW MODAL and PREVENT BODY SCROLLING
+   
     viewDetailsButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Get the target modal ID from the data attribute
+       
             const modalId = this.getAttribute('data-modal');
             const modalToShow = document.getElementById(modalId);
 
             if (modalToShow) {
                 modalToShow.style.display = 'flex'; 
-                // Add class to body to prevent background scrolling
+         
                 body.classList.add('modal-open'); 
             }
         });
@@ -534,7 +536,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function hideModal(modalElement) {
         modalElement.style.display = 'none';
-        // Remove class to allow background scrolling
+     
         body.classList.remove('modal-open'); 
     }
 
@@ -586,7 +588,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      container.innerHTML = ""; // Clear "Loading..." text
+      container.innerHTML = ""; 
 
       if (data.length === 0) {
         container.innerHTML = "<p>No properties found.</p>";
@@ -611,3 +613,83 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("property-list").innerHTML = "<p>Error loading properties.</p>";
     });
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const windowBox = document.getElementById("welcomeWindow");
+  const signupBtn = document.querySelector(".signUp");
+  const loginBtn = document.querySelector(".login");
+
+
+  if (!windowBox || !signupBtn || !loginBtn) {
+    console.log("Sliding elements not found on this page");
+    return;
+  }
+
+  signupBtn.addEventListener("click", function () {
+    windowBox.style.transform = "translateX(0)";
+  });
+
+  loginBtn.addEventListener("click", function () {
+    windowBox.style.transform = "translateX(100%)";
+  });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

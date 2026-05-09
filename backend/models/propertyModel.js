@@ -1,27 +1,84 @@
-import { Sequelize, DataTypes } from "sequelize";
-import dotenv from "dotenv";
-dotenv.config();
 
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+
+
+import { DataTypes } from "sequelize";
+import sequelize from "./db.js";
+
+
+
+const Property = sequelize.define(
+  "Property",
   {
-    host: process.env.DB_HOST,
-    dialect: "mysql",
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+
+    agent_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    price: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+
+    image: {
+      type: DataTypes.STRING,
+    },
+
+    description: {
+      type: DataTypes.TEXT,
+    },
+
+    features: {
+      type: DataTypes.TEXT,
+    },
+
+    amenities: {
+      type: DataTypes.TEXT,
+    },
+
+    floor: {
+      type: DataTypes.STRING,
+    },
+
+    is_available: {
+      type: DataTypes.TINYINT,
+      defaultValue: 1,
+    },
+
+    property_status: {
+      type: DataTypes.STRING,
+    },
+
+    status: {
+      type: DataTypes.ENUM("pending", "approved"),
+      defaultValue: "pending",
+    },
+  },
+  {
+    tableName: "properties",
+    timestamps: true,
   }
 );
 
-export const Property = sequelize.define("Property", {
-  title: { type: DataTypes.STRING, allowNull: false },
-  type: { type: DataTypes.STRING, allowNull: false }, // buy/sell/rent
-  city: { type: DataTypes.STRING, allowNull: false },
-  price: { type: DataTypes.FLOAT, allowNull: false },
-  image: { type: DataTypes.STRING },
-  description: { type: DataTypes.TEXT },
-});
+export default Property;
 
-// Sync model with DB
-sequelize.sync();
-
-export default sequelize;

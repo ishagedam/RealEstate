@@ -1,0 +1,206 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+
+  <link rel="stylesheet" href="./admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+ <body>
+
+<header style="padding: 20px 40px; color: #fff; display: flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box;">
+  <h1 id="welcomeText" style="margin: 0;">Welcome! 👋</h1>   
+  <div style="display: flex; align-items: center; gap: 10px; margin-left: auto;">
+      
+      <button id="logoutBtn">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </button>
+      
+      <button id="homebtn">
+          <a href="/index.html"><i class="fa-solid fa-house" style="color: rgb(64, 63, 63);"></i> Home</a>
+      </button>
+
+      <button id="viewProfileBtn" onclick="window.loadAndShowProfile()"> 
+    <i class="fa-solid fa-user-gear" style="color: rgb(20, 20, 21);"></i>
+</button>
+  </div>
+</header>
+
+<main style="padding:20px;">
+  <section style="margin-bottom:30px;">
+    <h3>Admin Actions</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+      <button id="viewUsersBtn"> <i class="fa-solid fa-user" style="color: rgb(20, 20, 21);"></i>View Users</button>
+      <button id="approveAgentBtn"> <i class="fa-solid fa-anchor-circle-check" style="color: rgb(20, 20, 21);"></i>Approve Agents</button>
+      <button id="viewAgentBtn"> <i class="fa-solid fa-user" style="color: rgb(20, 20, 21);"></i> View Agents</button>
+      <button id="blockAgentBtn"> <i class="fa-solid fa-delete-left" style="color: rgb(20, 20, 21);"></i> Remove/Block Agent</button>
+    </div>
+  </section>
+
+ 
+ <section style="margin-bottom:30px;">
+    <h3>Property Management</h3>
+         <button id="viewPropertiesBtn"> <i class="fa-solid fa-list"></i> View All Properties</button>
+
+
+
+<button id="viewAgentPropertiesBtn">
+    <i class="fa-solid fa-list"></i> View Agent Properties
+</button>
+         <button id="addPropertyBtn"> <i class="fa-solid fa-plus"></i>Add Property</button>
+      
+         <div id="addPropertyModal">
+         <button id="closeModalBtn"  style="float:right" type="button">Cancel</button>
+
+        <h3>Add New Property</h3>
+        <p style="color: rgb(236, 177, 40); align-items: center; justify-content: center; text-align: center;">List your property and connect with the right buyers instantly.</p>
+
+    <form id="addPropertyForm">
+
+      <label>Property Name</label>
+      <input type="text" name="title" required />
+
+      <label>Property Type</label>
+      <select name="type" required>
+        <option value="">Select</option>
+        <option value="Flat">Flat</option>
+        <option value="House">House</option>
+        <option value="Villa">Villa</option>
+      </select>
+
+      <label>City</label>
+      <input type="text" name="city" required />
+
+      <label>Price</label>
+      <input type="number" name="price" required />
+
+      <label>Image URL</label>
+      <input type="text" name="image" />
+
+      <label>Total Floors</label>
+      <input type="text" name="floor" placeholder=" eg: 0-100" />
+
+      <label>Features</label>
+      <div class="checkbox-group">
+         <label><input type="checkbox" name="feature" value=" Smart Home"> Smart Home</label>
+         <label><input type="checkbox" name="feature" value="Modular Kitchen"> Modular Kitchen</label>
+         <label><input type="checkbox" name="feature" value="Balcony"> Balcony</label>
+         <label><input type="checkbox" name="feature" value="Vastu Compliant"> Vastu Compliant</label>
+        <label><input type="checkbox" name="feature" value="Italian Marble"> Italian Marble</label>
+ 
+      </div>
+
+
+      <label>Description</label>
+      <textarea name="description" placeholder="eg: 2 bhk, 1200sqft, 2Baths, 2 Balconies "></textarea>
+
+       <label>Amenities</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="amenity" value="Infinity Pool">Infinity Pool</label>
+        <label><input type="checkbox" name="amenity" value="Gym">24/7 Security</label>
+        <label><input type="checkbox" name="amenity" value="Club House & Gym">Clubhouse & Gym</label>
+        <label><input type="checkbox" name="amenity" value="Parking"> Parking</label>
+        <label><input type="checkbox" name="amenity" value="Zen Garden">Zen Garden</label>
+  
+      </div> 
+  
+
+      <label>Property Status</label>
+      <select name="property_status">
+        <option value="">Select</option>
+        <option value="Ready">Ready</option>
+        <option value="Under Construction">Under Construction</option>
+      </select>
+
+      <label>Approval Status</label>
+      <select name="status">
+        <option value="pending">Pending</option>
+        <option value="approved">Approved</option>
+      </select>
+
+      <br><br>
+      <button type="submit">Add Property</button>
+
+     </form>
+       </div>
+      </div>
+  </section>
+ 
+  <section style="margin-top:30px;">
+    <h3>Enquiries</h3>
+    <div class="enquiry-buttons" style="margin-bottom:10px;">
+      <button id="myPropertiesBtn"><i class="fa-solid fa-comments"></i> My Property Enquiries</button>
+      <button id="allAgentsBtn"> <i class="fa-solid fa-comments"></i> All Agents’ Enquiries</button>
+    </div>
+    <div id="enquiryContainer" style="display:none; margin-top:15px;">
+      <table id="enquiryTable" border="1" width="100%">
+        <tbody id="enquiryTableBody"></tbody>
+      </table>
+    </div>
+    <br>
+    <button onclick="loadMessages()">Show Messages</button>
+    <div id="tableContainer">
+      <th></th>
+    </div>
+  </section>
+</main>
+
+
+
+<div class="rs-sidebar">
+    <div class="rs-card clock-card">
+        <div id="rs-time">00:00:00</div>
+        <div id="rs-day">Loading...</div>
+    </div>
+
+    <div class="rs-card cal-card">
+        <div class="cal-header" id="rs-month-year">Month Year</div>
+        <div class="cal-grid labels">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+        </div>
+        <div id="rs-calendar-days" class="cal-grid days"></div>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./admin.js" defer></script>
+</body> 
+</html> 
+ 
+ 
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
