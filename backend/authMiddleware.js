@@ -26,8 +26,4 @@ const authMiddleware = (role) => {
   };
 };
 
-
-
-
-
 export default authMiddleware;
