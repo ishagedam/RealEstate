@@ -107,8 +107,22 @@ const User = sequelize.define(
   }
 );
 
-await sequelize.sync();
-console.log("User table synced ✅");
+const startServer = async () => {
+  try {
+    await sequelize.sync();
+    console.log("User table synced ✅");
+
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT} 🚀`);
+    });
+
+  } catch (err) {
+    console.error("DB Sync Error:", err);
+  }
+};
+
+startServer();
 
 
 // ================= AUTH ROUTES =================
