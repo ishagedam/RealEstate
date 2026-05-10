@@ -28,21 +28,6 @@ const authMiddleware = (role) => {
 
 
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use(express.static(path.join(__dirname, "../")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../index.html"));
-});
-
-
-
-
-
-
-
 
 
 export default authMiddleware;

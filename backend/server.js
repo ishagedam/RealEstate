@@ -1,6 +1,8 @@
 
-
 // ================= IMPORTS =================
+
+import path from "path";
+import { fileURLToPath } from "url";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -14,8 +16,7 @@ import propertyRoutes from "./routes/propertyRoutes.js";
 import enquiryRoutes from "./routes/enquiryRoutes.js";
 import dashboardRouter from "./routes/dashboardRoutes.js";
 import Enquiry from "./models/enquiryModel.js";
-import path from "path";
-import { fileURLToPath } from "url";
+
 
 // ================= CONFIG =================
 dotenv.config();
@@ -25,6 +26,25 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "../")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../index.html"));
+});
+
+
+
+
+
+
+
+
 app.use("/api/dashboard", dashboardRouter);
 
 // ================= DATABASE =================
