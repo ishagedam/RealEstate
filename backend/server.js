@@ -14,6 +14,8 @@ import propertyRoutes from "./routes/propertyRoutes.js";
 import enquiryRoutes from "./routes/enquiryRoutes.js";
 import dashboardRouter from "./routes/dashboardRoutes.js";
 import Enquiry from "./models/enquiryModel.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 // ================= CONFIG =================
 dotenv.config();
