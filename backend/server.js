@@ -30,19 +30,35 @@ const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
-  {
-    host: process.env.DB_HOST || "localhost",
-    dialect: "mysql",
-    logging: false,
-  }
+  {  // for railway i will change this 
+    // host: process.env.DB_HOST || "localhost",
+    // dialect: "mysql",
+    // logging: false,
+
+    
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  dialect: "mysql",
+  logging: false,
+
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+}
+  
 );
 
-try {
-  await sequelize.authenticate();
-  console.log("MySQL Connected ✅");
-} catch (err) {
-  console.error("MySQL Connection Error ❌", err);
-}
+//for railway i am changed this
+
+// try {
+//   await sequelize.authenticate();
+//   console.log("MySQL Connected ✅");
+// } catch (err) {
+//   console.error("MySQL Connection Error ❌", err);
+// }
 
 // ================= USER MODEL =================
 const User = sequelize.define(
@@ -64,6 +80,7 @@ const User = sequelize.define(
 
 await sequelize.sync();
 console.log("User table synced ✅");
+
 
 // ================= AUTH ROUTES =================
 
