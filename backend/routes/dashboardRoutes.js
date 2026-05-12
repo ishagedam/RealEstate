@@ -126,7 +126,7 @@ router.post("/admin/property", authMiddleware("admin"), async (req, res) => {
 });
 
 
-li
+
 
 // ====================== ADMIN: UPDATE PROPERTY ======================
 router.put(
