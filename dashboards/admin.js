@@ -520,25 +520,6 @@ const amenitiesArr = Array.from(form.querySelectorAll('input[name="amenity"]:che
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //==============================================================================================================
 window.loadAndShowProfile = async function() {
     const token = localStorage.getItem("token");
