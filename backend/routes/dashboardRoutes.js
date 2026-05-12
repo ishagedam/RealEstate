@@ -126,26 +126,7 @@ router.post("/admin/property", authMiddleware("admin"), async (req, res) => {
 });
 
 
-router.post(
-  "api/admin/property",
-  authMiddleware("admin"),
-  async (req, res) => {
-    try {
-      const newProperty = await Property.create({
-        ...req.body,
-        createdBy: req.user.id
-      });
-
-      res.status(201).json(newProperty);
-
-    } catch (err) {
-      res.status(500).json({
-        message: "Failed to add property",
-        error: err.message
-      });
-    }
-  }
-);
+li
 
 // ====================== ADMIN: UPDATE PROPERTY ======================
 router.put(
