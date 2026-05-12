@@ -157,7 +157,7 @@ app.post("/api/signup", async (req, res) => {
       name,
       email,
       password: hashedPassword,
-        role: "admin"
+        role: "user"
     });
 
     res.status(201).json({
