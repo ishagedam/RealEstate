@@ -9,7 +9,7 @@ import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Sequelize, DataTypes } from "sequelize";
-import User from "../backend/models/userModel.js"; 
+
 
 import authMiddleware from "./authMiddleware.js";
 import clientRoutes from "./routes/clientRoutes.js";
