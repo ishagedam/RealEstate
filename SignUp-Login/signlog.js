@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ================= PASSWORD TOGGLE =================
-    // Note: He function global scope madhe aslele bare, jar tu HTML madhun onclick="togglePassword()" vaprat asshil tar.
+    // Note: He function global scope madhe aslele bare, bcz  me  HTML madhun onclick="togglePassword()" vaprat ahe.
     window.togglePassword = function(id) {
         const input = document.getElementById(id);
         if (input) {

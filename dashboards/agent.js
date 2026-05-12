@@ -88,7 +88,6 @@ document.getElementById("addPropertyForm")?.addEventListener("submit", async (e)
 
 
 
-//==================================
 
 const amenitiesArr = Array.from(e.target.querySelectorAll('input[name="amenity"]:checked'))
                                 .map(cb => cb.value);
@@ -98,7 +97,7 @@ const featuresArr = Array.from(e.target.querySelectorAll('input[name="feature"]:
                                .map(cb => cb.value);
     propertyData.features = featuresArr.join(', ');
 
-//=================================
+
 
   try {
     const res = await fetch("https://realestate-4667.onrender.com/api/dashboard/agent/property", {
@@ -593,10 +592,6 @@ if (document.readyState === 'loading') {
 } else {
     startMinimalWidgets();
 }
-
-
-
-
 
 
 

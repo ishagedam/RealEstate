@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     reader.readAsDataURL(file);
     
-    // Reset input to allow re-uploading same file
+  
     mediaInput.value = "";
   });
 });
