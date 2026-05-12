@@ -7,6 +7,16 @@
     
 }
 
+body{
+    height: 100%;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+    background-image: url("https://i.pinimg.com/1200x/3f/dd/71/3fdd71c134b9ac81c230923cc0a1d8a7.jpg");
+    background-size: cover;
+   
+   
+}
 
 .modern-modal {
     font-family: 'Lato', sans-serif; 
@@ -30,14 +40,7 @@
   
 }
 
-body{
-    height: 100%;
-    width: 100%;
-    font-family: 'Lato', sans-serif;
-    overflow-x: hidden;
-   
-   
-}
+
 
 
 .navbar{
