@@ -9,6 +9,7 @@ import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Sequelize, DataTypes } from "sequelize";
+import User from "../backend/models/userModel.js"; 
 
 import authMiddleware from "./authMiddleware.js";
 import clientRoutes from "./routes/clientRoutes.js";
@@ -16,7 +17,7 @@ import propertyRoutes from "./routes/propertyRoutes.js";
 import enquiryRoutes from "./routes/enquiryRoutes.js";
 import dashboardRouter from "./routes/dashboardRoutes.js";
 import Enquiry from "./models/enquiryModel.js";
-import "./models/propertyModel.js";
+
 import sequelize from "./models/db.js";
 import Property from "./models/propertyModel.js";
 
