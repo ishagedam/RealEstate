@@ -94,22 +94,22 @@ app.use("/api/dashboard", dashboardRouter);
 // }
 
 // ================= USER MODEL =================
-const User = sequelize.define(
-  "User",
-  {
-    name: { type: DataTypes.STRING, allowNull: false },
-    email: { type: DataTypes.STRING, allowNull: false, unique: true },
-    password: { type: DataTypes.STRING, allowNull: false },
-    role: {
-      type: DataTypes.ENUM("admin", "agent", "user"),
-      defaultValue: "user",
-    },
-  },
-  {
-    tableName: "users",
-    timestamps: true,
-  }
-);
+// const User = sequelize.define(
+//   "User",
+//   {
+//     name: { type: DataTypes.STRING, allowNull: false },
+//     email: { type: DataTypes.STRING, allowNull: false, unique: true },
+//     password: { type: DataTypes.STRING, allowNull: false },
+//     role: {
+//       type: DataTypes.ENUM("admin", "agent", "user"),
+//       defaultValue: "user",
+//     },
+//   },
+//   {
+//     tableName: "users",
+//     timestamps: true,
+//   }
+// );
 
 const startServer = async () => {
   try {
