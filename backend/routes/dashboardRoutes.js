@@ -82,7 +82,7 @@ router.post("/block-agent", authMiddleware("admin"), async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: "User not found" });
         }
-        await user.destroy({ force: true }); 
+        await user.destroy({ alter: true }); 
 
         res.json({ 
             success: true, 

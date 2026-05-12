@@ -112,7 +112,7 @@ const User = sequelize.define(
 
 const startServer = async () => {
   try {
-await sequelize.sync({ force: true });
+await sequelize.sync({ alter: true });
     console.log("User table synced ✅");
 
     //  i am changed this for render
