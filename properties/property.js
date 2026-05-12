@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadProperties() {
   try {
-    const res = await fetch("http://localhost:5000/api/properties");
+    const res = await fetch("https://realestate-4667.onrender.com/api/properties");
     
     const contentType = res.headers.get("content-type");
     if (!contentType || !contentType.includes("application/json")) {
@@ -98,7 +98,7 @@ async function loadProperties() {
 
 async function showPropertyDetails(id) {
   try {
-    const res = await fetch(`http://localhost:5000/api/properties/${id}`);
+    const res = await fetch(`https://realestate-4667.onrender.com/api/properties/${id}`);
     if (!res.ok) {
       alert("Property not found");
       return;
@@ -235,7 +235,7 @@ if (enquiryForm) {
       message: document.getElementById("message").value
     };
 
-    const res = await fetch("http://localhost:5000/api/enquiries", {
+    const res = await fetch("https://realestate-4667.onrender.com/api/enquiries", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)

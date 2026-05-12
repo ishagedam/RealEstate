@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
 
-        const response = await fetch("http://localhost:5000/api/auth/profile", {
+        const response = await fetch("https://realestate-4667.onrender.com/api/auth/profile", {
             headers: { "Authorization": `Bearer ${token}` }
         });
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // ================= WELCOME TEXT =================
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/profile", {
+    const res = await fetch("https://realestate-4667.onrender.com/api/profile", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }

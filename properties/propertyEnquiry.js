@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
   
-      const res = await fetch("http://localhost:5000/api/enquiries", { 
+      const res = await fetch("https://realestate-4667.onrender.com/api/enquiries", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json"

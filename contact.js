@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = document.getElementById("message").value;
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact_message", {
+      const response = await fetch("https://realestate-4667.onrender.com/api/contact_message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             try {
-                const res = await fetch("http://localhost:5000/api/signup", {
+                const res = await fetch("https://realestate-4667.onrender.com/api/signup", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ name, email, password })
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             try {
-                const res = await fetch("http://localhost:5000/api/login", {
+                const res = await fetch("https://realestate-4667.onrender.com/api/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password })

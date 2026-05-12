@@ -101,7 +101,7 @@ const featuresArr = Array.from(e.target.querySelectorAll('input[name="feature"]:
 //=================================
 
   try {
-    const res = await fetch("http://localhost:5000/api/dashboard/agent/property", {
+    const res = await fetch("https://realestate-4667.onrender.com/api/dashboard/agent/property", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -203,7 +203,7 @@ function openEditModal(property) {
       status: document.getElementById("editPropertyStatus").value
     };
     try {
-      const res = await fetch(`http://localhost:5000/api/properties/${id}`, {
+      const res = await fetch(`https://realestate-4667.onrender.com/api/properties/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -231,7 +231,7 @@ function openEditModal(property) {
 async function requestDelete(id) {
   if (!confirm("Are you sure you want to request delete this property?")) return;
   try {
-    const res = await fetch(`http://localhost:5000/api/dashboard/agent/property/${id}/request-delete`, {
+    const res = await fetch(`https://realestate-4667.onrender.com/api/dashboard/agent/property/${id}/request-delete`, {
       method: "PUT",
       headers: { 
         "Content-Type": "application/json",
@@ -260,7 +260,7 @@ async function loadMyProperties() {
 
   
   try {
-    const res = await fetch("http://localhost:5000/api/agent/properties", {
+    const res = await fetch("https://realestate-4667.onrender.com/api/agent/properties", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     });
     const data = await res.json();
@@ -398,7 +398,7 @@ function showModal(contentHtml) {
 // if (viewProfileBtn) {
 //   viewProfileBtn.addEventListener("click", async () => {
 //     try {
-//       const res = await fetch("http://localhost:5000/api/profile", {
+//       const res = await fetch("https://realestate-4667.onrender.com/api/profile", {
 //         headers: {
 //           Authorization: `Bearer ${token}`
 //         }
@@ -451,7 +451,7 @@ if (viewProfileBtn) {
         if (!token) return alert("Login first!");
 
         try {
-            const res = await fetch("http://localhost:5000/api/profile", {
+            const res = await fetch("https://realestate-4667.onrender.com/api/profile", {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             const p = await res.json();
@@ -524,7 +524,7 @@ if (viewProfileBtn) {
 // ================= WELCOME TEXT =================
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/profile", {
+    const res = await fetch("https://realestate-4667.onrender.com/api/profile", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }
@@ -559,7 +559,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Button clicked 🔥");
 
     try {
-      const res = await fetch("http://localhost:5000/api/agent/enquiries", {
+      const res = await fetch("https://realestate-4667.onrender.com/api/agent/enquiries", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
         }
@@ -684,7 +684,7 @@ window.loadAndShowProfile = async function() {
     if (!token) return;
 
     try {
-        const res = await fetch("http://localhost:5000/api/profile", {
+        const res = await fetch("https://realestate-4667.onrender.com/api/profile", {
             headers: { "Authorization": `Bearer ${token}` }
         });
         const data = await res.json();
@@ -697,7 +697,7 @@ window.loadAndShowProfile = async function() {
 
 window.renderStaticProfile = function(p) {
     const profileImg = p.profile_pic 
-        ? `http://localhost:5000/${p.profile_pic}` 
+        ? `https://realestate-4667.onrender.com/${p.profile_pic}` 
         : `https://ui-avatars.com/api/?name=${p.name}&background=DAC064&color=000&size=128`;
 
     const html = `
