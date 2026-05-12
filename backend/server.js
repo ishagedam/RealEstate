@@ -17,6 +17,8 @@ import enquiryRoutes from "./routes/enquiryRoutes.js";
 import dashboardRouter from "./routes/dashboardRoutes.js";
 import Enquiry from "./models/enquiryModel.js";
 import "./models/propertyModel.js";
+import sequelize from "./models/db.js";
+import Property from "./models/propertyModel.js";
 
 
 // ================= CONFIG =================
@@ -56,30 +58,30 @@ app.get("/", (req, res) => {
 app.use("/api/dashboard", dashboardRouter);
 
 // ================= DATABASE =================
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {  // for railway i will change this 
-    // host: process.env.DB_HOST || "localhost",
-    // dialect: "mysql",
-    // logging: false,
+// const sequelize = new Sequelize(
+//   process.env.DB_NAME,
+//   process.env.DB_USER,
+//   process.env.DB_PASSWORD,
+//   {  // for railway i will change this 
+//     // host: process.env.DB_HOST || "localhost",
+//     // dialect: "mysql",
+//     // logging: false,
 
     
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  dialect: "mysql",
-  logging: false,
+//   host: process.env.DB_HOST,
+//   port: process.env.DB_PORT,
+//   dialect: "mysql",
+//   logging: false,
 
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
-}
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//       rejectUnauthorized: false,
+//     },
+//   },
+// }
   
-);
+// );
 
 //for railway i am changed this
 
