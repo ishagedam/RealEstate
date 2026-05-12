@@ -131,406 +131,208 @@ const featuresArr = Array.from(e.target.querySelectorAll('input[name="feature"]:
 
 
 
-// // ===================== VIEW MY PROPERTIES WITH EDIT & DELETE =====================
-// const viewBtn = document.getElementById("viewMyPropertyBtn");
-// const myPropertyContainer = document.getElementById("myPropertyContainer");
 
-// // ================= EDIT MODAL =================
-// let editModal = null;
-// let editModalOpen = false;
+window.openEditModal = null;
+window.requestDelete = null;
 
-// function createEditModal() {
-//   editModal = document.createElement("div");
-//   editModal.id = "editModal";
-//   editModal.style = `
-//     display:none;
-//     position:fixed;
-//     top:50%;
-//     left:50%;
-//     transform:translate(-50%, -50%);
-//     background:white;
-//     padding:20px;
-//     border:1px solid #ccc;
-//     z-index:1000;
-//   `;
-//   document.body.appendChild(editModal);
-// }
-
-// function openEditModal(property) {
-//   if (!editModal) createEditModal();
-//   if (editModalOpen) {
-//     editModal.style.display = "none";
-//     editModalOpen = false;
-//     return;
-//   }
-
-//   editModal.innerHTML = `
-//     <h3>Edit Property</h3>
-//     <span id="closeEditModalBtn" style="cursor:pointer; float:right;">&times;</span>
-//     <form id="editPropertyForm">
-//       <input type="hidden" id="editPropertyId" value="${property.id}">
-//       <label>Title:</label><br>
-//       <input type="text" id="editPropertyTitle" value="${property.title}" required><br><br>
-//       <label>Type:</label><br>
-//       <input type="text" id="editPropertyType" value="${property.type}" required><br><br>
-//       <label>City:</label><br>
-//       <input type="text" id="editPropertyCity" value="${property.city}" required><br><br>
-//       <label>Price:</label><br>
-//       <input type="number" id="editPropertyPrice" value="${property.price}" required><br><br>
-//       <label>Status:</label><br>
-//       <select id="editPropertyStatus">
-//         <option value="pending" ${property.status==="pending"?"selected":""}>Pending</option>
-//         <option value="approved" ${property.status==="approved"?"selected":""}>Approved</option>
-//         <option value="rejected" ${property.status==="rejected"?"selected":""}>Rejected</option>
-//       </select><br><br>
-//       <button type="submit">Save</button>
-//     </form>
-//   `;
-
-//   document.getElementById("closeEditModalBtn").addEventListener("click", () => {
-//     editModal.style.display = "none";
-//     editModalOpen = false;
-//   });
-
-//   document.getElementById("editPropertyForm").addEventListener("submit", async (e) => {
-//     e.preventDefault();
-//     const id = document.getElementById("editPropertyId").value;
-//     const updatedData = {
-//       title: document.getElementById("editPropertyTitle").value,
-//       type: document.getElementById("editPropertyType").value,
-//       city: document.getElementById("editPropertyCity").value,
-//       price: document.getElementById("editPropertyPrice").value,
-//       status: document.getElementById("editPropertyStatus").value
-//     };
-//     try {
-//       const res = await fetch(`https://realestate-4667.onrender.com/api/properties/${id}`, {
-//         method: "PUT",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: `Bearer ${localStorage.getItem("token")}`
-//         },
-//         body: JSON.stringify(updatedData)
-//       });
-//       const data = await res.json();
-//       if (!res.ok) throw new Error(data.message || "Update failed");
-//       alert("Property updated successfully");
-//       editModal.style.display = "none";
-//       editModalOpen = false;
-//       loadMyProperties();
-//     } catch (err) {
-//       console.error("Edit property error:", err);
-//       alert("Server error while updating property");
-//     }
-//   });
-
-//   editModal.style.display = "block";
-//   editModalOpen = true;
-// }
-
-// // ================= REQUEST DELETE =================
-// async function requestDelete(id) {
-//   if (!confirm("Are you sure you want to request delete this property?")) return;
-//   try {
-//     const res = await fetch(`https://realestate-4667.onrender.com/api/dashboard/agent/property/${id}/request-delete`, {
-//       method: "PUT",
-//       headers: { 
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${localStorage.getItem("token")}`
-//       }
-//     });
-//     if (!res.ok) {
-//       const errorData = await res.json();
-//       throw new Error(errorData.error || "Delete request failed");
-//     }
-//     alert("Delete request sent successfully ✅");
-//     loadMyProperties();
-//   } catch (err) {
-//     console.error("Request delete error:", err);
-//     alert("Failed to send delete request ❌");
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function openEditModal(property) {
-  if (!editModal) createEditModal();
-
-  editModal.innerHTML = `
-    <div class="modal-header">
-      <h3>Edit Property</h3>
-      <span id="closeEditModalBtn" style="cursor:pointer;">&times;</span>
-    </div>
-
-    <form id="editPropertyForm">
-      <input type="hidden" id="editPropertyId" value="${property.id}">
-
-      <div class="form-grid">
-
-        <div class="form-group">
-          <label>Title</label>
-          <input type="text" id="editPropertyTitle" value="${property.title}" required>
-        </div>
-
-        <div class="form-group">
-          <label>Type</label>
-          <input type="text" id="editPropertyType" value="${property.type}" required>
-        </div>
-
-        <div class="form-group">
-          <label>City</label>
-          <input type="text" id="editPropertyCity" value="${property.city}" required>
-        </div>
-
-        <div class="form-group">
-          <label>Price</label>
-          <input type="number" id="editPropertyPrice" value="${property.price}" required>
-        </div>
-
-        <div class="form-group">
-          <label>Image URL</label>
-          <input type="text" id="editPropertyImage" value="${property.image || ''}">
-        </div>
-
-        <div class="form-group">
-          <label>Floor</label>
-          <input type="text" id="editPropertyFloor" value="${property.floor || ''}">
-        </div>
-
-        <div class="form-group">
-          <label>Property Status</label>
-          <input type="text" id="editPropertyStatusText" value="${property.property_status || ''}">
-        </div>
-
-        <div class="form-group">
-          <label>Listing Status</label>
-          <select id="editPropertyStatus">
-            <option value="pending" ${property.status==="pending"?"selected":""}>Pending</option>
-            <option value="approved" ${property.status==="approved"?"selected":""}>Approved</option>
-            <option value="rejected" ${property.status==="rejected"?"selected":""}>Rejected</option>
-          </select>
-        </div>
-
-        <div class="form-group full-width">
-          <label>Description</label>
-          <textarea id="editPropertyDescription">${property.description || ""}</textarea>
-        </div>
-
-        <div class="form-group full-width">
-          <label>Features</label>
-          <textarea id="editPropertyFeatures">${property.features || ""}</textarea>
-        </div>
-
-        <div class="form-group full-width">
-          <label>Amenities</label>
-          <textarea id="editPropertyAmenities">${property.amenities || ""}</textarea>
-        </div>
-
-      </div>
-
-      <button type="submit" class="save-btn">Update Property</button>
-    </form>
-  `;
-
-  // close
-  document.getElementById("closeEditModalBtn").onclick = () => {
-    editModal.style.display = "none";
-  };
-
-  // submit
-  document.getElementById("editPropertyForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const id = document.getElementById("editPropertyId").value;
-
-    const updatedData = {
-      title: document.getElementById("editPropertyTitle").value,
-      type: document.getElementById("editPropertyType").value,
-      city: document.getElementById("editPropertyCity").value,
-      price: document.getElementById("editPropertyPrice").value,
-      image: document.getElementById("editPropertyImage").value,
-      floor: document.getElementById("editPropertyFloor").value,
-      property_status: document.getElementById("editPropertyStatusText").value,
-      status: document.getElementById("editPropertyStatus").value,
-      description: document.getElementById("editPropertyDescription").value,
-      features: document.getElementById("editPropertyFeatures").value,
-      amenities: document.getElementById("editPropertyAmenities").value
-    };
-
-    try {
-      const res = await fetch(`https://realestate-4667.onrender.com/api/properties/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-        },
-        body: JSON.stringify(updatedData)
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
-
-      alert("Property updated successfully");
-      editModal.style.display = "none";
-      loadMyProperties();
-
-    } catch (err) {
-      console.error(err);
-      alert("Update failed");
+document.addEventListener("DOMContentLoaded", () => {
+    const viewBtn = document.getElementById("viewMyPropertyBtn");
+    if (viewBtn) {
+        viewBtn.onclick = loadMyProperties; 
     }
-  });
-
-  editModal.style.display = "block";
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ================= BUTTON CLICK =================
-viewBtn.addEventListener("click", () => {
-  loadMyProperties();
 });
 
-// ===================== LOAD PROPERTIES =====================
+// ===================== 1. LOAD PROPERTIES =====================
 async function loadMyProperties() {
-
-  
-  try {
-    const res = await fetch("https://realestate-4667.onrender.com/api/agent/properties", {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-    });
-    const data = await res.json();
-
-    if (!data.properties || data.properties.length === 0) {
-      alert("No properties found");
-      return;
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("Session missing. Please login again.");
+        return;
     }
 
-    let contentHtml = `
-      <table border="1" style="width:100%">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Type</th>
-            <th>City</th>
-            <th>Price</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${data.properties.map(p => `
-            <tr>
-              <td>${p.id}</td>
-              <td>${p.title}</td>
-              <td>${p.type}</td>
-              <td>${p.city}</td>
-              <td>${p.price}</td>
-              <td>${p.status}</td>
-              <td>
-                <button class="editBtn" data-prop='${JSON.stringify(p).replace(/'/g,"&apos;")}'>Edit</button> <br><br/>
+    try {
+        const res = await fetch("https://realestate-4667.onrender.com/api/agent/properties", {
+            method: "GET",
+            headers: { 
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        });
 
-                <button class="deleteBtn" data-id="${p.id}">Delete</button>
-              </td>
-            </tr>
-          `).join("")}
-        </tbody>
-      </table>
-    `;
+        if (res.status === 401) {
+            alert("Your session expired (401). Please logout and login again.");
+            return;
+        }
 
-    
-    const modal = document.createElement("div");
-    modal.classList.add("modal-overlay");
-    modal.innerHTML = `
-      <div class="modal" style="position:relative; background:#fff; padding:20px; max-width:800px; margin:50px auto;">
-        <span class="close-btn" style="
-          position:absolute;
-          top:10px;
-          right:15px;
-          font-size:24px;
-          cursor:pointer;
-          font-weight:bold;
-        ">&times;</span>
-        ${contentHtml}
-      </div>
-    `;
-    document.body.appendChild(modal);
+        const data = await res.json();
+        const properties = data.properties || [];
 
-    
-    modal.querySelector(".close-btn").addEventListener("click", () => {
-      modal.remove();
-    });
+        if (properties.length === 0) {
+            alert("No properties found.");
+            return;
+        }
 
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) modal.remove();
-    });
+        // Generate Table Rows
+        const tableRows = properties.map(p => {
+            const propId = p.id || p._id;
+            const safeData = encodeURIComponent(JSON.stringify(p));
+            return `
+                <tr>
+                    <td>${propId}</td>
+                    <td><strong>${p.title}</strong></td>
+                    <td>${p.type}</td>
+                    <td>$${p.price}</td>
+                    <td><span class="status-badge ${p.status}">${p.status}</span></td>
+                    <td>
+                        <button class="edit-btn" onclick="openEditModal('${safeData}')">
+                            <i class="fa-solid fa-pen"></i> Edit
+                        </button>
+                        <button class="delete-btn" onclick="requestDelete('${propId}')">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>`;
+        }).join("");
 
-  
-    document.querySelectorAll(".editBtn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const property = JSON.parse(btn.getAttribute("data-prop").replace(/&apos;/g,"'"));
-        openEditModal(property);
-      });
-    });
+        // Render List Modal
+        const listModalHtml = `
+            <div id="viewPropertiesModal" class="modal-overlay" style="display:flex;">
+                <div class="modal-content" style="max-width: 950px; width: 95%;">
+                    <div class="modal-header">
+                        <h3>My Real Estate Listings</h3>
+                        <span class="close-btn" onclick="this.closest('.modal-overlay').remove()">&times;</span>
+                    </div>
+                    <div style="overflow-x:auto;">
+                        <table class="property-table">
+                            <thead>
+                                <tr><th>ID</th><th>Title</th><th>Type</th><th>Price</th><th>Status</th><th>Actions</th></tr>
+                            </thead>
+                            <tbody>${tableRows}</tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>`;
 
-    
+        const oldModal = document.getElementById("viewPropertiesModal");
+        if (oldModal) oldModal.remove();
+        document.body.insertAdjacentHTML('beforeend', listModalHtml);
 
-    document.querySelectorAll(".deleteBtn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-id");
-        requestDelete(id);
-      });
-    });
-
-  } catch (err) {
-    console.error("Load properties error:", err);
-    alert("Error loading properties");
-  }
+    } catch (err) {
+        console.error("Fetch Error:", err);
+        alert("Connection error. Is the server awake?");
+    }
 }
 
+// ===================== 2. FULL EDIT MODAL =====================
+window.openEditModal = function(encodedData) {
+    const property = JSON.parse(decodeURIComponent(encodedData));
+    const propId = property.id || property._id;
 
+    // Helper for checkboxes
+    const isChecked = (val, list) => {
+        if (!list) return "";
+        const items = Array.isArray(list) ? list : list.split(',').map(s => s.trim());
+        return items.includes(val.trim()) ? "checked" : "";
+    };
+
+    const editModalHtml = `
+        <div id="editPropertyModal" class="modal-overlay" style="display:flex; z-index: 10001;">
+            <div class="modal-content" style="max-width: 850px;">
+                <div class="modal-header">
+                    <h3>Edit: ${property.title}</h3>
+                    <span class="close-btn" onclick="document.getElementById('editPropertyModal').remove()">&times;</span>
+                </div>
+                <form id="editPropertyForm">
+                    <div class="form-grid">
+                        <div class="form-group"><label>Title</label><input type="text" id="ed_title" value="${property.title || ''}" required></div>
+                        <div class="form-group"><label>Price ($)</label><input type="number" id="ed_price" value="${property.price || ''}" required></div>
+                        <div class="form-group"><label>Type</label>
+                            <select id="ed_type">
+                                <option value="Flat" ${property.type==='Flat'?'selected':''}>Flat</option>
+                                <option value="House" ${property.type==='House'?'selected':''}>House</option>
+                                <option value="Villa" ${property.type==='Villa'?'selected':''}>Villa</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>City</label><input type="text" id="ed_city" value="${property.city || ''}"></div>
+                        <div class="form-group full-width"><label>Image URL</label><input type="text" id="ed_image" value="${property.image || ''}"></div>
+                        <div class="form-group"><label>Floor</label><input type="text" id="ed_floor" value="${property.floor || ''}"></div>
+                        <div class="form-group"><label>Property Status</label>
+                            <select id="ed_pstatus">
+                                <option value="Ready" ${property.property_status==='Ready'?'selected':''}>Ready</option>
+                                <option value="Under Construction" ${property.property_status==='Under Construction'?'selected':''}>Under Construction</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Features</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="ed_feat" value="Smart Home" ${isChecked("Smart Home", property.features)}> Smart Home</label>
+                                <label><input type="checkbox" name="ed_feat" value="Modular Kitchen" ${isChecked("Modular Kitchen", property.features)}> Modular Kitchen</label>
+                                <label><input type="checkbox" name="ed_feat" value="Balcony" ${isChecked("Balcony", property.features)}> Balcony</label>
+                            </div>
+                        </div>
+                        <div class="form-group full-width"><label>Description</label><textarea id="ed_desc" rows="3">${property.description || ''}</textarea></div>
+                        <div class="form-group full-width">
+                            <label>Amenities</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="ed_amen" value="Infinity Pool" ${isChecked("Infinity Pool", property.amenities)}> Infinity Pool</label>
+                                <label><input type="checkbox" name="ed_amen" value="Gym" ${isChecked("Gym", property.amenities)}> Gym</label>
+                                <label><input type="checkbox" name="ed_amen" value="Parking" ${isChecked("Parking", property.amenities)}> Parking</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="save-btn" style="width:100%; margin-top:15px; background:#DAC064; color:#000;">Update Everything</button>
+                </form>
+            </div>
+        </div>`;
+
+    document.body.insertAdjacentHTML('beforeend', editModalHtml);
+
+    // Save Logic
+    document.getElementById("editPropertyForm").onsubmit = async (e) => {
+        e.preventDefault();
+        const features = Array.from(document.querySelectorAll('input[name="ed_feat"]:checked')).map(el => el.value).join(", ");
+        const amenities = Array.from(document.querySelectorAll('input[name="ed_amen"]:checked')).map(el => el.value).join(", ");
+
+        const bodyData = {
+            title: document.getElementById("ed_title").value,
+            price: document.getElementById("ed_price").value,
+            type: document.getElementById("ed_type").value,
+            city: document.getElementById("ed_city").value,
+            image: document.getElementById("ed_image").value,
+            floor: document.getElementById("ed_floor").value,
+            property_status: document.getElementById("ed_pstatus").value,
+            description: document.getElementById("ed_desc").value,
+            features: features,
+            amenities: amenities
+        };
+
+        const res = await fetch(`https://realestate-4667.onrender.com/api/properties/${propId}`, {
+            method: "PUT",
+            headers: { 
+                "Content-Type": "application/json", 
+                "Authorization": `Bearer ${localStorage.getItem("token")}` 
+            },
+            body: JSON.stringify(bodyData)
+        });
+
+        if (res.ok) {
+            alert("Property fully updated! ✅");
+            location.reload(); 
+        } else {
+            alert("Update failed. Check if you are authorized.");
+        }
+    };
+};
+
+// ===================== 3. DELETE LOGIC =====================
+window.requestDelete = async function(id) {
+    if (!confirm("Are you sure you want to delete this?")) return;
+    const res = await fetch(`https://realestate-4667.onrender.com/api/dashboard/agent/property/${id}/request-delete`, {
+        method: "PUT",
+        headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
+    });
+    if (res.ok) { alert("Deleted Successfully! ✅"); location.reload(); }
+};
 
 
 
@@ -566,55 +368,6 @@ function showModal(contentHtml) {
     if (e.target === modal) closeModal();
   });
 }
-
-
-
-
-// const viewProfileBtn = document.getElementById("viewProfileBtn");
-
-// if (viewProfileBtn) {
-//   viewProfileBtn.addEventListener("click", async () => {
-//     try {
-//       const res = await fetch("https://realestate-4667.onrender.com/api/profile", {
-//         headers: {
-//           Authorization: `Bearer ${token}`
-//         }
-//       });
-
-//       if (!res.ok) throw new Error("Failed to load profile");
-
-//       const p = await res.json();
-
-//       const profileHtml = `
-//         <h3>My Profile</h3>
-//         <table border="1" style="width:100%; margin-top:10px;">
-//           <tr><th>ID</th><td>${p.id}</td></tr>
-//           <tr><th>Name</th><td>${p.name}</td></tr>
-//           <tr><th>Email</th><td>${p.email}</td></tr>
-//           <tr><th>Mobile</th><td>${p.mobile}</td></tr>
-//           <tr><th>Role</th><td>${p.role}</td></tr>
-//           <tr><th>Joined</th><td>${new Date(p.created_at).toLocaleDateString()}</td></tr>
-//         </table>
-//         <button onclick="closeModal()" style="margin-top:10px;">Close</button>
-//       `;
-
-//       showModal(profileHtml);
-
-//     } catch (err) {
-//       console.error("Load profile error:", err);
-//       alert("Unable to load profile");
-//     }
-//   });
-// }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -687,13 +440,6 @@ if (viewProfileBtn) {
         }
     });
 }
-
-//=========================================================================================================
-
-
-
-
-
 
 
 
@@ -855,7 +601,6 @@ if (document.readyState === 'loading') {
 
 
 
-//==============================================================================================================
 window.loadAndShowProfile = async function() {
     const token = localStorage.getItem("token");
     if (!token) return;

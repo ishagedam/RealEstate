@@ -105,12 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                // SAVE AUTH DATA
+          
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("role", data.role);
                 localStorage.setItem("userId", data.userId || "");
 
-                // REDIRECT
+            
                 if (data.role === "admin") {
                     window.location.href = "../dashboards/adminDashboard.html";
                 } else if (data.role === "agent") {
