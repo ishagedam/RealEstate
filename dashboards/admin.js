@@ -277,12 +277,14 @@ document.getElementById("viewPropertiesBtn")?.addEventListener("click", async ()
     const res = await fetch("https://realestate-4667.onrender.com/api/dashboard", {
       headers: { Authorization: `Bearer ${token}` }
     });
-    const properties = await res.json();
+  const properties = await res.json();
 
-    if (!properties || properties.length === 0) {
-      alert("No properties found");
-      return;
-    }
+properties.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+if (!properties || properties.length === 0) {
+  alert("No properties found");
+  return;
+}
 
     let tableHtml = `
       <h3>All Properties</h3>
@@ -467,56 +469,6 @@ const amenitiesArr = Array.from(form.querySelectorAll('input[name="amenity"]:che
     }
   });
 });
-
-
-
-
-
-// const viewProfileBtn = document.getElementById("viewProfileBtn");
-
-// if (viewProfileBtn) {
-//   viewProfileBtn.addEventListener("click", async () => {
-//     try {
-//       const res = await fetch("https://realestate-4667.onrender.com/api/profile", {
-//         headers: {
-//           Authorization: `Bearer ${token}`
-//         }
-//       });
-
-//       if (!res.ok) throw new Error("Failed to load profile");
-
-//       const p = await res.json();
-
-//       const profileHtml = `
-//         <h3>My Profile</h3>
-//         <table border="1" style="width:100%; margin-top:10px;">
-//           <tr><th>ID</th><td>${p.id}</td></tr>
-//           <tr><th>Name</th><td>${p.name}</td></tr>
-//           <tr><th>Email</th><td>${p.email}</td></tr>
-//           <tr><th>Mobile</th><td>${p.mobile}</td></tr>
-//           <tr><th>Role</th><td>${p.role}</td></tr>
-//           <tr><th>Joined</th><td>${new Date(p.created_at).toLocaleDateString()}</td></tr>
-//         </table>
-        
-//       `;
-
-//       showModal(profileHtml);
-
-//     } catch (err) {
-//       console.error("Load profile error:", err);
-//       alert("Unable to load profile");
-//     }
-//   });
-// }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -996,6 +948,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 const properties = data.properties;
+                
+                 properties.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
                 if (!properties || properties.length === 0) {
                     Swal.fire('Info', 'No properties found for this agent.', 'info');

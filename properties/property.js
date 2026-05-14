@@ -179,7 +179,7 @@ async function showPropertyDetails(id) {
                 </div>
             </div>
 
-            <button class="close-secondary" id="closeModal2">CLOSE</button>
+      
           </div>
 
         </div>
