@@ -134,3 +134,37 @@ gsap.from(".forthsection", {
   duration: 1,
   ease: "power3.out"
 });
+
+
+
+  // ---------------- Menu Toggle ----------------
+  const menuIcon = document.querySelector('.menu-icon i');
+  const navPart2 = document.querySelector('.navpart2');
+
+  menuIcon.addEventListener('click', () => {
+    navPart2.classList.toggle('active');
+    menuIcon.classList.toggle('fa-bars');
+    menuIcon.classList.toggle('fa-xmark');
+
+  });
+
+
+
+ gsap.from(".navpart2 a", {
+    y: -20,
+    opacity: 0,
+    duration: 0.9,
+    stagger: 0.15,   
+    delay: 0.3,      
+    ease: "power3.out"
+  });
+
+  
+  gsap.from(".contain h1", { duration: 1.5, y: 80, opacity: 0, stagger: 0.12 });
+  gsap.from(".contain p", { duration: 1.2, y: 50, opacity: 0 });
+  gsap.from(".contain .Buttons", { duration: 1.5, y: 80, opacity: 0 });
+
+
+  const splitNav = new SplitType(".navbar h6", { types: "chars" });
+  gsap.from(splitNav.chars, { y: -20, opacity: 0, duration: 0.5, stagger: 0.1 });
+

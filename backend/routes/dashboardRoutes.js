@@ -372,8 +372,12 @@ router.get("/agent/properties/:agentId", authMiddleware("agent"), async (req, re
 // View all properties
 router.get("/properties", authMiddleware("user"), async (req, res) => {
   try {
-    const properties = await Property.findAll();
+    const properties = await Property.findAll({
+      order: [['createdAt', 'DESC']]
+    });
+
     res.json({ properties });
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

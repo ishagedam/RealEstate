@@ -160,4 +160,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+
+
+
+
+    // Mobile Toggle Elements
+const signUpMobile = document.getElementById('signUpMobile');
+const signInMobile = document.getElementById('signInMobile');
+
+// Mobile Link Clicks
+if(signUpMobile) {
+    signUpMobile.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+}
+
+if(signInMobile) {
+    signInMobile.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+}
+
 });
+
+
+
+
+
+
+

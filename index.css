@@ -114,7 +114,7 @@ a{
   .navpart2 {
     display: none;
     flex-direction: column;
-    background-color: transparent; 
+    background:url("https://i.pinimg.com/1200x/59/ba/4c/59ba4c8be763ed20a77f31dfe0697069.jpg"); 
     position: absolute;
     top: 80px;
     right: 20px;

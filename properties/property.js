@@ -54,7 +54,7 @@ async function loadProperties() {
     const properties = Array.isArray(data) ? data : []; 
 
     const container = document.getElementById("propertyContainer");
-    container.innerHTML = ''; // clear container
+    container.innerHTML = ''; 
 
     properties.forEach(prop => {
       const card = document.createElement('div');
