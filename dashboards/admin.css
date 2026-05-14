@@ -108,20 +108,11 @@ section {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     margin-bottom: 30px;
-    gap: 20px;
-    display: flex;
-   align-items: center;
+  
 }
 
 
-@media (max-width: 768px) {
 
-   .section{
-      flex-direction: column;
-      align-items: flex-start;
-   }
-
-}
 section h3 {
     margin-bottom: 20px;
     color: #b2afaf;
