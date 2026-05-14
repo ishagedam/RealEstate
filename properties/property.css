@@ -443,24 +443,32 @@ h4 i {
 
 .close-btn {
     position: absolute;
-    top: 15px; right: 25px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #ccc;
-    transition: 0.3s;
-}
-.close-btn:hover { color: #333; }
+    top: 15px;
+    right: 25px;
 
-.close-secondary {
-    background: none;
-    border: none;
-    color: #bbb;
-    font-size: 10px;
-    letter-spacing: 2px;
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: rgba(0,0,0,0.65);
+
+    color: #fff;
+    font-size: 26px;
     cursor: pointer;
-    align-self: center;
-    margin-top: 30px;
+
+    z-index: 999999;
+    transition: 0.3s ease;
 }
+
+.close-btn:hover {
+    background: rgba(0,0,0,0.9);
+    color: #DAC064;
+}
+
 
 @media (max-width: 900px) {
 
@@ -491,6 +499,17 @@ h4 i {
         text-align: center;
         gap: 20px;
     }
+
+    .close-btn{
+    position: fixed;
+    top: 12px;
+    right: 12px;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 22px;
+}
 }
 
 
