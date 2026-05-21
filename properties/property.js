@@ -244,6 +244,14 @@ if (enquiryForm) {
     const result = await res.json();
     alert(result.message);
   });
+
+
 }
+
+fetch("/footer/footer.html")
+.then(response => response.text())
+.then(data => {
+  document.getElementById("footer").innerHTML = data;
+});
 
 

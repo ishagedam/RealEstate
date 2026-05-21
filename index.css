@@ -2503,57 +2503,6 @@ body, html {
 }
 
 
-.footer-content {
-    background-color: var(--color-dark);
-    color: var(--color-white);
-    padding: 2.5rem 5vw;
-}
-
-.footer-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-}
-
-.footer-inner p {
-    font-size: 0.9rem;
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-}
-
-.social-links {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 1.5rem;
-}
-
-.social-links a {
-    color: #9ca3af;
-    transition: color 0.3s ease;
-    text-decoration: none;
-}
-
-.social-links a:hover {
-    color: var(--color-accent);
-}
-
-@media (min-width: 768px) {
-    .footer-inner {
-        flex-direction: row;
-        text-align: left;
-    }
-    .footer-inner p {
-        margin-bottom: 0;
-    }
-    .social-links {
-        margin-top: 0;
-    }
-}   
-
 
 
 
