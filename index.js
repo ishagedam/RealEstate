@@ -166,11 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const splitNav = new SplitType(".navbar h6", { types: "chars" });
   gsap.from(splitNav.chars, { y: -20, opacity: 0, duration: 0.5, stagger: 0.1 });
 
-fetch("footer/footer.html")
-.then(response => response.text())
-.then(data => {
-  document.getElementById("footer").innerHTML = data;
-});
+
 
 // ==========================================  About page js   ========================================
  
