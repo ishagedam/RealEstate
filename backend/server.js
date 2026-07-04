@@ -17,7 +17,7 @@ import enquiryRoutes from "./routes/enquiryRoutes.js";
 import dashboardRouter from "./routes/dashboardRoutes.js";
 
 import sequelize from "./models/db.js";
-import User from "./models/User.js";
+import User from "./models/userModel.js"
 import Property from "./models/propertyModel.js";
 import Enquiry from "./models/enquiryModel.js";
 
