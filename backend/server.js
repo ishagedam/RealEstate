@@ -17,8 +17,10 @@ import enquiryRoutes from "./routes/enquiryRoutes.js";
 import dashboardRouter from "./routes/dashboardRoutes.js";
 
 import sequelize from "./models/db.js";
+import User from "./models/User.js";
 import Property from "./models/propertyModel.js";
 import Enquiry from "./models/enquiryModel.js";
+
 
 // ================= CONFIG =================
 dotenv.config();
@@ -45,31 +47,33 @@ app.use("/api", propertyRoutes);
 app.use("/api", enquiryRoutes);
 app.use("/uploads", express.static("uploads"));
 
+// changes made on 4/07/26 time : 9:22
 
-
-const User = sequelize.define(
-  "User",
-  {
-    name: { type: DataTypes.STRING, allowNull: false },
-    email: { type: DataTypes.STRING, allowNull: false, unique: true },
-    password: { type: DataTypes.STRING, allowNull: false },
-    role: {
-      type: DataTypes.ENUM("admin", "agent", "user"),
-      defaultValue: "user",
-    },
-    mobile: { type: DataTypes.STRING, allowNull: true },
-    profile_pic: { type: DataTypes.STRING, allowNull: true },
-  },
-  {
-    tableName: "users",
-    timestamps: true,
-  }
-);
+// const User = sequelize.define(
+//   "User",
+//   {
+//     name: { type: DataTypes.STRING, allowNull: false },
+//     email: { type: DataTypes.STRING, allowNull: false, unique: true },
+//     password: { type: DataTypes.STRING, allowNull: false },
+//     role: {
+//       type: DataTypes.ENUM("admin", "agent", "user"),
+//       defaultValue: "user",
+//     },
+//     mobile: { type: DataTypes.STRING, allowNull: true },
+//     profile_pic: { type: DataTypes.STRING, allowNull: true },
+//   },
+//   {
+//     tableName: "users",
+//     timestamps: true,
+//   }
+// );
 
 // ================= START SERVER =================
 const startServer = async () => {
   try {
-    await sequelize.sync({ alter: true });
+    // await sequelize.sync({ alter: true });
+
+    await sequelize.sync({ alter: false });
     console.log("User table synced ✅");
 
     const PORT = process.env.PORT || 5000;
